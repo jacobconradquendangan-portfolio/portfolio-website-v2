@@ -1,69 +1,48 @@
-import Image from "next/image";
+"use client";
+
+import { FormEvent, useMemo, useState } from "react";
+
+type Project = { title: string; desc: string; tech: string[]; github: string; category: string; featured?: boolean };
+const githubBase = "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/";
+const projects: Project[] = [
+  { title: "MNLFlow Transit", desc: "1st Place Industry Choice Award. Flight tracking and regional transit logic with real-time analytics dashboard.", tech: ["Flight Tracking", "Transit Logic", "Analytics", "Figma"], github: githubBase + "01_Industry_Wins_Awards/MNLFlow_ALIAC", category: "Industry Award", featured: true },
+  { title: "Rosemary & Thyme", desc: "Entrepreneurship analysis and a functional restaurant reservation system with table management.", tech: ["Entrepreneurship", "Reservation System", "Figma", "UX Design"], github: githubBase + "01_Industry_Wins_Awards/Rosemary_Thyme_Restaurant", category: "Industry Award" },
+  { title: "CESCon Sales Blitz", desc: "Highest Sales Award. Bazaar performance documentation, demand forecasting, and ROI analysis.", tech: ["Sales Analytics", "Demand Forecasting", "Documentation"], github: githubBase + "01_Industry_Wins_Awards/CESCon_Sales_Blitz", category: "Industry Award" },
+  { title: "Aegis Verification Platform", desc: "2nd Place Hackathon. Next.js and Firebase authentication and verification system with MFA support.", tech: ["Next.js", "Firebase", "Authentication", "MFA"], github: githubBase + "01_Industry_Wins_Awards/Institutional_Hackathon", category: "Industry Award", featured: true },
+  { title: "MetroStay Platform", desc: "Technopreneurship case study, business strategy, and mobile application with real-time booking.", tech: ["Mobile App", "Business Strategy", "Technopreneurship"], github: githubBase + "02_Systems_Architecture_Dev/MetroStay_Technopreneurship", category: "System Architecture" },
+  { title: "EduTrack Enrollment", desc: "Full-cycle enrollment system with subject prerequisite logic and automated advising.", tech: ["JavaScript", "Enrollment System"], github: githubBase + "02_Systems_Architecture_Dev/EduTrack_Tech_Com", category: "System Architecture" },
+  { title: "Hotel Management SAD", desc: "Structural and behavioral blueprints, UML, DFD, SRS documentation, and use case analysis.", tech: ["UML", "DFD", "SRS", "System Architecture"], github: githubBase + "02_Systems_Architecture_Dev/SAD_Hotel_Management", category: "System Architecture" },
+  { title: "Bulls & Cows Engine", desc: "C++ source code and algorithmic breakdown for a deductive logic game with an AI opponent.", tech: ["C++", "Algorithms", "Game Logic", "AI"], github: githubBase + "02_Systems_Architecture_Dev/DSA_Bulls_Cows", category: "System Architecture" },
+  { title: "Software Testing & Selenium", desc: "Hybrid Quality Engineering suite featuring 20 automated test cases and comprehensive manual documentation.", tech: ["Selenium", "Node.js", "Quality Assurance"], github: githubBase + "02_Systems_Architecture_Dev/Fundamentals_Software_Testing_Selenium", category: "System Architecture" },
+  { title: "Airline Regression", desc: "Statistical regression analysis of service quality fit measures, coefficients, and R² results.", tech: ["Regression", "Statistics", "Jamovi"], github: githubBase + "03_Data_Analytics_Dashboards/Airline_Service_Regression", category: "Data Analytics" },
+  { title: "BI HR Dashboards", desc: "Workforce analytics suite covering recruitment, wellness, headcount, and predictive turnover modeling.", tech: ["Power BI", "HR Analytics", "Dashboard"], github: githubBase + "03_Data_Analytics_Dashboards/BI_HR_Attrition", category: "Data Analytics", featured: true },
+  { title: "Diabetes ML Classifier", desc: "Python machine learning model for health-risk prediction with 92% accuracy.", tech: ["Python", "Machine Learning", "Scikit-learn"], github: githubBase + "03_Data_Analytics_Dashboards/Diabetes_Prediction_ML", category: "Data Analytics", featured: true },
+  { title: "EDM Medical Schema", desc: "Hospital database architecture with SQL scripts and Metabase analytics for patient outcomes.", tech: ["SQL", "Database Design", "Metabase"], github: githubBase + "03_Data_Analytics_Dashboards/EDM_Medical_SQL", category: "Data Analytics" },
+  { title: "SCM Inventory Health", desc: "Automated supply chain inventory logic and health monitoring built in Excel.", tech: ["Excel", "Supply Chain", "Inventory Management"], github: githubBase + "03_Data_Analytics_Dashboards/SCM_Inventory_Excel", category: "Data Analytics" },
+  { title: "Wine Data Mining", desc: "RapidMiner processes using decision trees and logistic regression for quality prediction.", tech: ["RapidMiner", "Data Mining", "Classification"], github: githubBase + "03_Data_Analytics_Dashboards/Wine_Quality_Data_Mining", category: "Data Analytics", featured: true },
+];
+const skills = ["Python", "JavaScript", "C++", "TypeScript", "SQL", "Next.js", "React", "Firebase", "Power BI", "Excel", "Pandas", "Scikit-learn", "Figma", "Selenium", "MongoDB", "GitHub"];
+const categories = ["All", "Industry Award", "System Architecture", "Data Analytics"];
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  const [category, setCategory] = useState("All");
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<Project | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [sent, setSent] = useState(false);
+  const filtered = useMemo(() => projects.filter((project) => (category === "All" || project.category === category) && `${project.title} ${project.desc} ${project.tech.join(" ")}`.toLowerCase().includes(query.toLowerCase())), [category, query]);
+  const goTo = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); };
+  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSent(true); event.currentTarget.reset(); };
+
+  return <main className="site-shell">
+    <nav className="nav-shell"><button className="brand" onClick={() => goTo("home")}>JC<span>.</span></button><div className={`nav-links ${menuOpen ? "is-open" : ""}`}>{["projects", "certifications", "skills", "contact"].map((id) => <button key={id} onClick={() => goTo(id)}>{id}</button>)}</div><a className="nav-cta" href="mailto:jacobconradquendangan@gmail.com">Let&apos;s talk <span>-&gt;</span></a><button className="menu-button" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "Close" : "Menu"}</button></nav>
+    <section className="hero-panel" id="home"><div className="hero-copy"><p className="eyebrow">4th-year student / CIIT College of Innovation and Integrated Technology</p><h1>Hi, I&apos;m<br /><em>Jacob.</em></h1><p className="hero-intro">I&apos;m an Information Systems student focused on data analytics, machine learning, software development, and user-centered design.</p><div className="hero-actions"><button className="button button-dark" onClick={() => goTo("projects")}>View academic work <span>-&gt;</span></button><button className="button button-outline" onClick={() => goTo("contact")}>Contact me</button></div></div><div className="hero-card"><div className="hero-portrait"></div><div className="hero-orbit"></div><div className="hero-code">&lt;system<br />&nbsp;&nbsp;status=<span>&quot;curious&quot;</span><br />/&gt;</div><p>Jacob Conrad<br />Quendangan<br /><span>CIIT / 04</span></p></div></section>
+    <section className="stats-strip">{[[projects.length, "Academic projects"], ["2+", "Recognitions"], [skills.length, "Tools explored"], ["4th", "Year at CIIT"]].map(([value, label]) => <div key={String(label)}><strong>{value}</strong><span>{label}</span></div>)}</section>
+    <section className="content-section" id="projects"><div className="section-heading"><div><p className="eyebrow">Selected work</p><h2>Projects with<br /><em>a purpose.</em></h2></div><p className="section-note">From systems architecture to predictive analytics, these are the problems I&apos;ve enjoyed solving.</p></div><div className="project-tools"><input aria-label="Search projects" placeholder="Search projects..." value={query} onChange={(event) => setQuery(event.target.value)} /><div className="filter-row">{categories.map((item) => <button className={category === item ? "active" : ""} key={item} onClick={() => setCategory(item)}>{item}</button>)}</div></div><div className="project-grid-rich">{filtered.map((project, index) => <article className={`project-card card-${(index % 4) + 1}`} key={project.title} onClick={() => setSelected(project)}><div className="card-art"><span>{String(index + 1).padStart(2, "0")}</span><b>{project.title.slice(0, 1)}</b></div><div className="card-body"><div className="card-kicker">{project.category}{project.featured && <i>Featured</i>}</div><h3>{project.title}</h3><p>{project.desc}</p><div className="tech-list">{project.tech.slice(0, 3).map((item) => <span key={item}>{item}</span>)}</div><button className="text-button">View details <span>-&gt;</span></button></div></article>)}</div>{filtered.length === 0 && <p className="empty-state">No projects match that search.</p>}</section>
+    <section className="dark-section" id="certifications"><div className="section-heading"><div><p className="eyebrow">Credentials &amp; leadership</p><h2>Always<br /><em>learning.</em></h2></div><p className="section-note">Proof of the curiosity, consistency, and collaboration behind the work.</p></div><div className="credential-grid"><article><span className="credential-number">01</span><h3>HubSpot Certifications</h3><p>Professional certifications in inbound marketing, sales, and customer service with practical implementation.</p><a href={githubBase + "04_Credentials_Leadership/HubSpot_Certs"} target="_blank" rel="noreferrer">View credentials ↗</a></article><article><span className="credential-number">02</span><h3>Leadership Portfolio</h3><p>Tech Lead roles and institutional speaking engagements including 5+ major conferences.</p><a href={githubBase + "04_Credentials_Leadership/Leadership_Speaking"} target="_blank" rel="noreferrer">View portfolio ↗</a></article></div></section>
+    <section className="content-section skills-section" id="skills"><div className="section-heading"><div><p className="eyebrow">Toolkit</p><h2>Tools for<br /><em>the job.</em></h2></div></div><div className="skill-cloud">{skills.map((skill, index) => <span className={`skill-pill pill-${index % 4}`} key={skill}>{skill}</span>)}</div></section>
+    <section className="contact-panel" id="contact"><div><p className="eyebrow">Let&apos;s connect</p><h2>Let&apos;s make<br /><em>something</em> clear.</h2><a className="contact-email" href="mailto:jacobconradquendangan@gmail.com">jacobconradquendangan@gmail.com ↗</a></div><form onSubmit={submit}><label htmlFor="name">Name<input id="name" required name="name" /></label><label htmlFor="email">Email<input id="email" required type="email" name="email" /></label><label htmlFor="message">Message<textarea id="message" required name="message" rows={4} /></label><button className="button button-dark" type="submit">{sent ? "Message received" : "Send message ->"}</button></form></section>
+    <footer className="site-footer"><span>© 2024 Jacob Conrad Quendangan</span><span>Information Systems / CIIT College</span><a href="#home">Back to top ↑</a></footer>
+    {selected && <div className="modal-backdrop" onClick={() => setSelected(null)}><article className="project-modal" onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setSelected(null)}>Close ×</button><p className="eyebrow">{selected.category}</p><h2>{selected.title}</h2><p>{selected.desc}</p><div className="modal-tech">{selected.tech.map((item) => <span key={item}>{item}</span>)}</div><a className="button button-dark" href={selected.github} target="_blank" rel="noreferrer">Open on GitHub ↗</a></article></div>}
+  </main>;
 }
