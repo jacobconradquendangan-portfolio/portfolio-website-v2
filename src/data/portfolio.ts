@@ -190,6 +190,7 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["UML", "DFD", "SRS", "System Architecture"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/02_Systems_Architecture_Dev/SAD_Hotel_Management",
+    live: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/02_Systems_Architecture_Dev/SAD_Hotel_Management/Documentation/presentation.pdf",
     category: "System Architecture",
     highlight: "UML • DFD • SRS",
     gradient: G.system,
@@ -255,6 +256,7 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["RapidMiner", "Data Mining", "Decision Trees", "Classification"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/03_Data_Analytics_Dashboards/Wine_Quality_Data_Mining",
+    live: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/03_Data_Analytics_Dashboards/Wine_Quality_Data_Mining/Datamining_Final_Report.pdf",
     category: "Data Analytics",
     highlight: "Decision Trees • LogReg",
     featured: true,

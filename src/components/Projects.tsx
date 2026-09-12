@@ -11,6 +11,7 @@ import { projects, projectCategories } from "@/data/portfolio";
 export default function Projects() {
   const [category, setCategory] = useState<(typeof projectCategories)[number]>("All");
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [pdfSrc, setPdfSrc] = useState<string | null>(null);
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
@@ -106,14 +107,23 @@ export default function Projects() {
                     <GithubIcon className="h-4 w-4" /> View on GitHub →
                   </a>
                   {p.live && (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
-                    >
-                      {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") ? "Certificate ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
-                    </a>
+                    p.live.endsWith(".pdf") ? (
+                      <button
+                        onClick={() => setPdfSrc(p.live!)}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                      >
+                        {p.title === "Wine Data Mining" ? "Report ↗" : "Slides ↗"}
+                      </button>
+                    ) : (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                      >
+                        {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") ? "Certificate ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
+                      </a>
+                    )
                   )}
                   {p.video && (
                     <button
@@ -161,6 +171,34 @@ export default function Projects() {
                 <span>{videoSrc?.includes("EDM_Medical_SQL") ? "EDM Dashboard Demo — hosted on GitHub" : videoSrc?.includes("Fundamentals_Software_Testing_Selenium") ? "Demo by group member Ken Escolar — hosted on GitHub" : "MetroStay Demo — hosted on GitHub"}</span>
                 <a href={videoSrc} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Open raw ↗</a>
               </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {pdfSrc && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+            onClick={() => setPdfSrc(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.96, opacity: 0 }}
+              className="relative flex h-[85vh] w-[95%] max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-900 px-4 py-3 text-sm text-white">
+                <span className="font-medium">{pdfSrc?.includes("Datamining_Final_Report") ? "Wine Quality — Report" : "Hotel Management SAD — Slides"}</span>
+                <div className="flex items-center gap-2">
+                  <a href={pdfSrc} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-3 py-1 text-xs font-medium text-black hover:bg-zinc-100">Open raw ↗</a>
+                  <button onClick={() => setPdfSrc(null)} aria-label="Close" className="grid h-8 w-8 place-items-center rounded-full bg-white/15 text-white hover:bg-white/25">✕</button>
+                </div>
+              </div>
+              <iframe src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfSrc)}`} title="Slides" className="h-full w-full flex-1 border-0" />
             </motion.div>
           </motion.div>
         )}
