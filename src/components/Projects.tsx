@@ -64,7 +64,7 @@ export default function Projects() {
       <SectionHeading
         eyebrow="Selected work"
         title={`${projects.length} projects, 3 tracks`}
-        copy="Industry awards, systems architecture, and data analytics — every project documented on GitHub."
+        copy="Spanning industry award-winners, systems architecture, and data analytics—each codebase fully documented and open-sourced on GitHub."
       />
 
       {/* filters with counts + search aligned — 2 per row on mobile */}
