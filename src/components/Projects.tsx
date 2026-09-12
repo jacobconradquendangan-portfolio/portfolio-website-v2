@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Star, TrendingUp } from "lucide-react";
 import { GithubIcon } from "./icons";
@@ -43,7 +44,7 @@ export default function Projects() {
 
       <motion.div layout className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
-          {filtered.map((p) => (
+          {filtered.map((p, idx) => (
             <motion.article
               layout
               key={p.title}
@@ -53,8 +54,15 @@ export default function Projects() {
               transition={{ duration: 0.3 }}
               className="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white dark:border-white/[.09] dark:bg-slate-900"
             >
-              <div className={`relative h-40 bg-gradient-to-br ${p.gradient} p-5`}>
-                <div className="bg-grid absolute inset-0 opacity-40" />
+              <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
+                {p.image ? (
+                  <>
+                    <Image src={p.image} alt={p.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 2} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                  </>
+                ) : (
+                  <div className="bg-grid absolute inset-0 opacity-40" />
+                )}
                 <span className="relative inline-flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1 text-xs font-medium text-white backdrop-blur">
                   <TrendingUp className="h-3.5 w-3.5" /> {p.highlight}
                 </span>
@@ -104,7 +112,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                     >
-                      {p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
+                      {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") ? "Certificate ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
                     </a>
                   )}
                   {p.video && (

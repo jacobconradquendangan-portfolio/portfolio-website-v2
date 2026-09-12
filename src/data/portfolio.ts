@@ -69,6 +69,7 @@ export type Project = {
   github: string;
   live?: string;
   video?: string;
+  image?: string;
   category: "Industry Award" | "System Architecture" | "Data Analytics";
   highlight: string;
   featured?: boolean;
@@ -99,6 +100,7 @@ export const projects: (Project & { gradient: string })[] = [
     highlight: "Live • Full-Stack",
     featured: true,
     gradient: "from-violet-600 via-fuchsia-500 to-orange-400",
+    image: "/projects/cvbuilder.webp",
   },
   {
     title: "MNLFlow Transit",
@@ -107,10 +109,12 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["Flight Tracking", "Transit Logic", "Analytics", "Figma", "UX Design"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/01_Industry_Wins_Awards/MNLFlow_ALIAC",
+    live: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/01_Industry_Wins_Awards/MNLFlow_ALIAC/awards/industry_choice_award.png",
     category: "Industry Award",
     highlight: "1st Place • Industry Choice",
     featured: true,
     gradient: G.award,
+    image: "/projects/mnlflow.webp",
   },
   {
     title: "Aegis Verification Platform",
@@ -124,6 +128,7 @@ export const projects: (Project & { gradient: string })[] = [
     highlight: "2nd Place • Hackathon",
     featured: true,
     gradient: G.award,
+    image: "/projects/aegishackathon.webp",
   },
   {
     title: "Rosemary & Thyme",
@@ -132,9 +137,11 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["Entrepreneurship", "Reservation System", "Figma", "UX Design"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/01_Industry_Wins_Awards/Rosemary_Thyme_Restaurant",
+    live: "https://www.figma.com/proto/POcZDoavPIU7AC0DxBL7dB/HCIFO?node-id=87-422&t=pPJ4IspMhfQnnKhC-1&scaling=scale-down&content-scaling=fixed&page-id=11%3A88&starting-point-node-id=283%3A4679",
     category: "Industry Award",
     highlight: "Reservation System",
     gradient: G.award,
+    image: "/projects/rosemaryandthyme.webp",
   },
   {
     title: "CESCon Sales Blitz",
@@ -143,9 +150,11 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["Sales Analytics", "Demand Forecasting", "Documentation"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/01_Industry_Wins_Awards/CESCon_Sales_Blitz",
+    live: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/01_Industry_Wins_Awards/CESCon_Sales_Blitz/media/Highest_Sales_Award_Team.jpg",
     category: "Industry Award",
     highlight: "Highest Sales Award",
     gradient: G.award,
+    image: "/projects/salesblitz.webp",
   },
   {
     title: "MetroStay Platform",
@@ -159,6 +168,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "System Architecture",
     highlight: "Mobile .apk + Strategy",
     gradient: G.system,
+    image: "/projects/metrostay.webp",
   },
   {
     title: "EduTrack Enrollment",
@@ -171,6 +181,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "System Architecture",
     highlight: "Full-cycle System",
     gradient: G.system,
+    image: "/projects/edutrack.webp",
   },
   {
     title: "Hotel Management SAD",
@@ -182,6 +193,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "System Architecture",
     highlight: "UML • DFD • SRS",
     gradient: G.system,
+    image: "/projects/hotel.webp",
   },
   {
     title: "Bulls & Cows Engine",
@@ -193,6 +205,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "System Architecture",
     highlight: "C++ • AI Opponent",
     gradient: G.system,
+    image: "/projects/bullsandcow.webp",
   },
   {
     title: "Selenium Test Automation",
@@ -206,6 +219,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "System Architecture",
     highlight: "20 Automated Tests",
     gradient: G.system,
+    image: "/projects/softwaretesting.webp",
   },
   {
     title: "Diabetes ML Classifier",
@@ -218,6 +232,7 @@ export const projects: (Project & { gradient: string })[] = [
     highlight: "92% Accuracy",
     featured: true,
     gradient: G.data,
+    image: "/projects/diabetes.webp",
   },
   {
     title: "BI HR Dashboards",
@@ -231,6 +246,7 @@ export const projects: (Project & { gradient: string })[] = [
     highlight: "Predictive Turnover Model",
     featured: true,
     gradient: G.data,
+    image: "/projects/hrbidashboard.webp",
   },
   {
     title: "Wine Data Mining",
@@ -243,6 +259,7 @@ export const projects: (Project & { gradient: string })[] = [
     highlight: "Decision Trees • LogReg",
     featured: true,
     gradient: G.data,
+    image: "/projects/datamining.webp",
   },
   {
     title: "Airline Regression",
@@ -254,6 +271,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "Data Analytics",
     highlight: "R² Analysis",
     gradient: G.data,
+    image: "/projects/airline.webp",
   },
   {
     title: "EDM Medical Schema",
@@ -267,6 +285,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "Data Analytics",
     highlight: "Hospital DB Architecture",
     gradient: G.data,
+    image: "/projects/edm.webp",
   },
   {
     title: "SCM Inventory Health",
@@ -279,6 +298,7 @@ export const projects: (Project & { gradient: string })[] = [
     category: "Data Analytics",
     highlight: "Automated Monitoring",
     gradient: G.data,
+    image: "/projects/scminventory.webp",
   },
 ];
 
