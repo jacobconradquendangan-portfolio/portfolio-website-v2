@@ -106,7 +106,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group flex h-full items-center gap-4 rounded-3xl border border-black/[.07] bg-white p-6 transition-shadow hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900"
+                  className="group flex h-full items-center gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900"
                 >
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-900 text-white transition-transform group-hover:scale-105 dark:bg-white dark:text-black">
                     <c.icon className="h-5 w-5" />

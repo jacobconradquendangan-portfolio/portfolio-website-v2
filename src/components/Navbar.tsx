@@ -53,7 +53,7 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-black/[.08] bg-white/75 backdrop-blur-xl dark:border-white/[.08] dark:bg-slate-900/70"
+          ? "border-b border-slate-200 bg-white/75 backdrop-blur-xl dark:border-white/[.08] dark:bg-slate-900/70"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -68,7 +68,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 rounded-full border border-black/[.08] bg-white/60 p-1 backdrop-blur md:flex dark:border-white/[.1] dark:bg-white/[.04]">
+        <div className="hidden items-center gap-1 rounded-full border border-slate-200 bg-white/60 p-1 backdrop-blur md:flex dark:border-white/[.1] dark:bg-white/[.04]">
           {links.map((l) => (
             <a
               key={l.href}
@@ -111,7 +111,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-black/[.08] bg-white/95 backdrop-blur-xl md:hidden dark:border-white/[.08] dark:bg-slate-900/95"
+            className="overflow-hidden border-b border-slate-200 bg-white/95 backdrop-blur-xl md:hidden dark:border-white/[.08] dark:bg-slate-900/95"
           >
             <div className="space-y-1 px-6 py-4">
               {links.map((l) => (

@@ -109,7 +109,7 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
-          <motion.div variants={item} className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-black/[.08] pt-6 dark:border-white/[.1]">
+          <motion.div variants={item} className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-slate-200 pt-6 dark:border-white/[.1]">
             {profile.stats.map((s) => (
               <div key={s.label}>
                 <p className="text-2xl font-bold tracking-tight">{s.value}</p>
@@ -125,7 +125,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.25 }}
           className="relative hidden w-full max-w-md justify-self-center lg:block"
         >
-          <div className="animate-float relative rounded-3xl border border-black/[.08] bg-white/80 p-3 shadow-2xl backdrop-blur-xl dark:border-white/[.12] dark:bg-slate-900/70">
+          <div className="animate-float relative rounded-3xl border border-slate-200 bg-white/80 p-3 shadow-2xl backdrop-blur-xl dark:border-white/[.12] dark:bg-slate-900/70">
             <div className="animate-float absolute -top-12 -right-6 z-10 [animation-delay:-2.5s]">
               {photoOk ? (
                 <Image
@@ -179,7 +179,7 @@ export default function Hero() {
       </motion.div>
 
       <style>{`.findme-link{position:relative;overflow:hidden}.findme-link::before{content:"";position:absolute;inset:0;border-radius:9999px;background:linear-gradient(135deg,#8b5cf6,#ec4899,#f97316);opacity:0;transition:opacity .3s;z-index:0}.findme-link:hover::before{opacity:1}.findme-link:hover{color:#fff!important;box-shadow:0 8px 24px rgb(124 58 237 / .28)!important;transform:translateY(-2px) scale(1.04)}.findme-link:active{transform:translateY(0) scale(.98)!important}.findme-link>svg,.findme-link>span{position:relative;z-index:1}@media(prefers-color-scheme:dark){.findme-link:hover{color:#fff!important}}`}</style>
-      <div className="border-y border-black/[.06] bg-black/[.02] dark:border-white/[.06] dark:bg-white/[.02]">
+      <div className="border-y border-slate-200 bg-black/[.02] dark:border-white/[.06] dark:bg-white/[.02]">
         <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-3 text-sm font-medium text-zinc-500">
           <span className="font-mono text-xs uppercase tracking-widest">Find me</span>
           <motion.a href={profile.socials.github} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">

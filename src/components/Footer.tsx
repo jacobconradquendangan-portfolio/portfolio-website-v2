@@ -5,7 +5,7 @@ const marquee = ["Python", "Machine Learning", "Power BI", "Next.js", "TypeScrip
 
 export default function Footer() {
   return (
-    <footer className="overflow-hidden border-t border-black/[.07] dark:border-white/[.08]">
+    <footer className="overflow-hidden border-t border-slate-200 dark:border-white/[.08]">
       <div className="mask-fade-x overflow-hidden py-5 opacity-60">
         <div className="animate-marquee flex w-max gap-8 font-mono text-xs uppercase tracking-[0.2em]">
           {[...marquee, ...marquee].map((m, i) => (

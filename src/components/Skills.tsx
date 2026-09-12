@@ -14,7 +14,7 @@ const icons: Record<string, typeof Code2> = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 border-y border-black/[.06] bg-black/[.02] dark:border-white/[.06] dark:bg-white/[.02]">
+    <section id="skills" className="scroll-mt-24 border-y border-slate-200 bg-black/[.02] dark:border-white/[.06] dark:bg-white/[.02]">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <SectionHeading
           eyebrow="Skills"
@@ -31,7 +31,7 @@ export default function Skills() {
             const Icon = icons[g.icon] ?? Code2;
             return (
               <StaggerItem key={g.category}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg dark:border-white/[.09] dark:bg-slate-900">
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg dark:border-white/[.09] dark:bg-slate-900">
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                   <div className="flex items-start gap-4">
                     <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-900 text-white shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:rotate-1">
@@ -42,7 +42,7 @@ export default function Skills() {
                       <p className="mt-0.5 text-xs leading-4 text-zinc-500">{g.description}</p>
                     </div>
                   </div>
-                  <div className="mt-5 flex-1 border-t border-black/[.06] pt-4 dark:border-white/[.08]">
+                  <div className="mt-5 flex-1 border-t border-slate-200 pt-4 dark:border-white/[.08]">
                     <div className="flex flex-wrap gap-2">
                       {g.items.map((s) => (
                         <span

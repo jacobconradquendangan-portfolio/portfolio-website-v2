@@ -29,7 +29,7 @@ export default function Certifications() {
           const certGallery = (c as any).gallery as string[] | undefined;
           return (
             <StaggerItem key={c.title}>
-              <div className="group flex h-full flex-col rounded-3xl border border-black/[.07] bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900">
+              <div className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900">
                 <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg">
                   <Icon className="h-5 w-5" />
                 </span>

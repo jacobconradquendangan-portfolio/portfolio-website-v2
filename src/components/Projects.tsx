@@ -26,6 +26,13 @@ export default function Projects() {
     () => false,
   );
 
+  const shortLabel: Record<string, string> = {
+    All: "All",
+    "Industry Award": "Industry",
+    "System Architecture": "Systems",
+    "Data Analytics": "Data",
+  };
+
   const counts = {
     All: projects.length,
     "Industry Award": projects.filter((p) => p.category === "Industry Award").length,
@@ -60,9 +67,9 @@ export default function Projects() {
         copy="Industry awards, systems architecture, and data analytics — every project documented on GitHub."
       />
 
-      {/* filters with counts + search aligned */}
-      <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-wrap gap-2">
+      {/* filters with counts + search aligned — 2 per row on mobile */}
+      <div className="mt-8 flex flex-col-reverse gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-wrap lg:gap-2">
           {projectCategories.map((c) => (
             <button
               key={c}
@@ -70,18 +77,18 @@ export default function Projects() {
                 setCategory(c);
                 setShowAll(false);
               }}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+              className={`whitespace-nowrap rounded-full px-3 py-2 text-xs font-medium transition sm:px-4 sm:py-2 sm:text-sm ${
                 category === c
                   ? "bg-slate-900 text-white shadow-lg dark:bg-white dark:text-black"
                   : "border border-black/10 text-zinc-600 hover:bg-black/[.05] dark:border-white/15 dark:text-zinc-400 dark:hover:bg-white/[.07]"
               }`}
             >
-              {c} <span className={`ml-1.5 rounded-full px-2 py-0.5 text-xs ${category === c ? "bg-white/15 text-white" : "bg-black/[.06] text-zinc-600 dark:bg-white/[.08] dark:text-zinc-400"}`}>{counts[c as keyof typeof counts]}</span>
+              <span className="sm:hidden">{shortLabel[c]}</span><span className="hidden sm:inline">{c}</span> <span className={`ml-1.5 rounded-full px-2 py-0.5 text-xs ${category === c ? "bg-white/15 text-white" : "bg-black/[.06] text-zinc-600 dark:bg-white/[.08] dark:text-zinc-400"}`}>{counts[c as keyof typeof counts]}</span>
             </button>
           ))}
         </div>
 
-        <div className="relative w-full max-w-md shrink-0">
+        <div className="relative w-full shrink-0 lg:max-w-md">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
           <input
             value={query}
@@ -101,7 +108,7 @@ export default function Projects() {
 
       {/* Featured hero — horizontal banner */}
       {hero && (
-        <motion.div layout className="mt-8 overflow-hidden rounded-3xl border border-black/[.07] bg-white shadow-sm dark:border-white/[.09] dark:bg-slate-900">
+        <motion.div layout className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_4px_20px_rgba(15,23,42,0.08)] dark:border-white/[.09] dark:bg-slate-900">
           <div className="grid md:grid-cols-[1.15fr_1fr]">
             <div className="relative h-64 overflow-hidden bg-black md:h-auto md:min-h-[320px]">
               {hero.image ? (
@@ -153,7 +160,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.3 }}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white dark:border-white/[.09] dark:bg-slate-900"
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-white/[.09] dark:bg-slate-900"
             >
               <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (
@@ -251,7 +258,7 @@ export default function Projects() {
         <div className="mt-6 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="rounded-full border border-black/10 bg-white px-6 py-2.5 text-sm font-medium shadow-sm transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+            className="rounded-full border border-black/10 bg-white px-6 py-2.5 text-sm font-medium shadow-[0_4px_20px_rgba(15,23,42,0.08)] transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
           >
             {showAll ? "Show less ↑" : `Show all ${gridFiltered.length} projects (${hiddenCount} more) ↓`}
           </button>
