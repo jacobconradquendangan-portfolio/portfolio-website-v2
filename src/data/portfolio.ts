@@ -312,6 +312,10 @@ export const certifications = [
       "Professional certifications in inbound marketing, sales, and customer service with practical implementation.",
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/HubSpot_Certs",
+    gallery: [
+      "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/HubSpot_Certs/HubSpot%20Marketing%20Hub%20Software%20Certificate.png",
+      "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/HubSpot_Certs/HubSpot%20Sales%20Hub%20Software%20Certificate.png",
+    ],
   },
   {
     title: "Leadership Portfolio",
@@ -326,6 +330,7 @@ export const certifications = [
       "Certified in Lean Six Sigma fundamentals — waste reduction, process mapping, and continuous improvement methodology.",
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert",
+    pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert/Official_Certification_Issued_Lean_Six_Sigma_White_Belt_Certification.pdf",
   },
   {
     title: "AI Engineering Workshop (Cursor)",
@@ -333,5 +338,6 @@ export const certifications = [
       "Hands-on workshop in AI-assisted software development with Cursor — agentic coding workflows, LLM integration, and shipping AI-driven features.",
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/Tech_Certificate_AI_Engineering_for_Software_Development",
+    pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Tech_Certificate_AI_Engineering_for_Software_Development/jacob_quendangan.png",
   },
 ];
