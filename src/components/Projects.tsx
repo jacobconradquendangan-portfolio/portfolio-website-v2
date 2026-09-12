@@ -169,7 +169,6 @@ export default function Projects() {
               </video>
               <div className="flex justify-between bg-zinc-900 px-4 py-3 text-xs text-zinc-400">
                 <span>{videoSrc?.includes("EDM_Medical_SQL") ? "EDM Dashboard Demo — hosted on GitHub" : videoSrc?.includes("Fundamentals_Software_Testing_Selenium") ? "Demo by group member Ken Escolar — hosted on GitHub" : "MetroStay Demo — hosted on GitHub"}</span>
-                <a href={videoSrc} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Open raw ↗</a>
               </div>
             </motion.div>
           </motion.div>
@@ -194,7 +193,6 @@ export default function Projects() {
               <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-900 px-4 py-3 text-sm text-white">
                 <span className="font-medium">{pdfSrc?.includes("Datamining_Final_Report") ? "Wine Quality — Report" : pdfSrc?.includes("Airline_Service_Analysis") ? "Airline Service — Report" : "Hotel Management SAD — Slides"}</span>
                 <div className="flex items-center gap-2">
-                  <a href={pdfSrc} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-3 py-1 text-xs font-medium text-black hover:bg-zinc-100">Open raw ↗</a>
                   <button onClick={() => setPdfSrc(null)} aria-label="Close" className="grid h-8 w-8 place-items-center rounded-full bg-white/15 text-white hover:bg-white/25">✕</button>
                 </div>
               </div>
