@@ -12,12 +12,15 @@ export default function Projects() {
   const [category, setCategory] = useState<(typeof projectCategories)[number]>("All");
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [pdfSrc, setPdfSrc] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
     () => false,
   );
-  const filtered = category === "All" ? projects : projects.filter((p) => p.category === category);
+    const filtered = category === "All" ? projects : projects.filter((p) => p.category === category);
+    const visible = category === "All" && !showAll ? filtered.slice(0, 5) : filtered;
+    const hiddenCount = filtered.length - visible.length;
 
   return (
     <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
@@ -31,7 +34,10 @@ export default function Projects() {
         {projectCategories.map((c) => (
           <button
             key={c}
-            onClick={() => setCategory(c)}
+            onClick={() => {
+              setCategory(c);
+              setShowAll(false);
+            }}
             className={`rounded-full px-4 py-2 text-sm font-medium transition ${
               category === c
                 ? "bg-slate-900 text-white shadow-lg dark:bg-white dark:text-black"
@@ -45,7 +51,7 @@ export default function Projects() {
 
       <motion.div layout className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
-          {filtered.map((p, idx) => (
+          {visible.map((p, idx) => (
             <motion.article
               layout
               key={p.title}
@@ -53,13 +59,13 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.3 }}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white dark:border-white/[.09] dark:bg-slate-900"
+              className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white dark:border-white/[.09] dark:bg-slate-900 ${p.title === "Full-Stack CV Builder (Agentic Workflow)" ? "md:col-span-2 lg:col-span-2" : ""}`}
             >
-              <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
+              <div className={`relative overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5 ${p.title === "Full-Stack CV Builder (Agentic Workflow)" ? "h-56" : "h-48"}`}>
                 {p.image ? (
                   <>
-                    <Image src={p.image} alt={p.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 2} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                    <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 2} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
                   </>
                 ) : (
                   <div className="bg-grid absolute inset-0 opacity-40" />
@@ -86,16 +92,19 @@ export default function Projects() {
                 </a>
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-bold tracking-tight">{p.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                <h3 className={`font-bold tracking-tight ${p.title === "Full-Stack CV Builder (Agentic Workflow)" ? "text-xl" : "text-lg"}`}>{p.title}</h3>
+                <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                   {p.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (
+                  {p.tags.slice(0, 3).map((t) => (
                     <span key={t} className="rounded-full bg-black/[.05] px-2.5 py-1 text-xs font-medium dark:bg-white/[.07]">
                       {t}
                     </span>
                   ))}
+                  {p.tags.length > 3 && (
+                    <span className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-500 dark:bg-white/[.05]">+{p.tags.length - 3}</span>
+                  )}
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   <a
@@ -139,6 +148,17 @@ export default function Projects() {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {category === "All" && filtered.length > 5 && (
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="rounded-full border border-black/10 bg-white px-6 py-2.5 text-sm font-medium shadow-sm transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+          >
+            {showAll ? "Show less ↑" : `Show all ${filtered.length} projects (${hiddenCount} more) ↓`}
+          </button>
+        </div>
+      )}
 
       <AnimatePresence>
         {videoSrc && (
