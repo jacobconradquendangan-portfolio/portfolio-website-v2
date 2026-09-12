@@ -104,7 +104,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                     >
-                      {p.live.includes("officeapps.live.com") ? "Preview ↗" : "Live ↗"}
+                      {p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
                     </a>
                   )}
                   {p.video && (

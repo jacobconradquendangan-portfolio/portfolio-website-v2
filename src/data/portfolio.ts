@@ -273,6 +273,7 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["Excel", "Supply Chain", "Inventory Management"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/03_Data_Analytics_Dashboards/SCM_Inventory_Excel",
+    live: "https://docs.google.com/spreadsheets/d/1pi-65n5sWiRS8G9-ZpBcOv6OWJWOTtqhP-28oUdRzeY/edit?gid=942817655#gid=942817655",
     category: "Data Analytics",
     highlight: "Automated Monitoring",
     gradient: G.data,
