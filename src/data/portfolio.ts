@@ -262,6 +262,8 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["SQL", "Database Design", "Metabase", "PostgreSQL"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/03_Data_Analytics_Dashboards/EDM_Medical_SQL",
+    video:
+      "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/03_Data_Analytics_Dashboards/EDM_Medical_SQL/Media/Dashboard_Demo.mp4",
     category: "Data Analytics",
     highlight: "Hospital DB Architecture",
     gradient: G.data,

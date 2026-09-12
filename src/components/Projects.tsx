@@ -150,7 +150,7 @@ export default function Projects() {
                 Your browser does not support the video tag.
               </video>
               <div className="flex justify-between bg-zinc-900 px-4 py-3 text-xs text-zinc-400">
-                <span>{videoSrc?.includes("Fundamentals_Software_Testing_Selenium") ? "Demo by Ken Escolar — hosted on GitHub" : "MetroStay Demo — hosted on GitHub"}</span>
+                <span>{videoSrc?.includes("EDM_Medical_SQL") ? "EDM Dashboard Demo — hosted on GitHub" : videoSrc?.includes("Fundamentals_Software_Testing_Selenium") ? "Demo by group member Ken Escolar — hosted on GitHub" : "MetroStay Demo — hosted on GitHub"}</span>
                 <a href={videoSrc} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Open raw ↗</a>
               </div>
             </motion.div>
