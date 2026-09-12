@@ -270,6 +270,7 @@ export const projects: (Project & { gradient: string })[] = [
     tags: ["Regression Analysis", "Statistics", "Jamovi"],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/03_Data_Analytics_Dashboards/Airline_Service_Regression",
+    live: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/03_Data_Analytics_Dashboards/Airline_Service_Regression/Airline_Service_Analysis.pdf",
     category: "Data Analytics",
     highlight: "R² Analysis",
     gradient: G.data,

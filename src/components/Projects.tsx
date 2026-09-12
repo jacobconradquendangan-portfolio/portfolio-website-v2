@@ -112,7 +112,7 @@ export default function Projects() {
                         onClick={() => setPdfSrc(p.live!)}
                         className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                       >
-                        {p.title === "Wine Data Mining" ? "Report ↗" : "Slides ↗"}
+                        {p.title === "Wine Data Mining" || p.title === "Airline Regression" ? "Report ↗" : "Slides ↗"}
                       </button>
                     ) : (
                       <a
@@ -192,7 +192,7 @@ export default function Projects() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-900 px-4 py-3 text-sm text-white">
-                <span className="font-medium">{pdfSrc?.includes("Datamining_Final_Report") ? "Wine Quality — Report" : "Hotel Management SAD — Slides"}</span>
+                <span className="font-medium">{pdfSrc?.includes("Datamining_Final_Report") ? "Wine Quality — Report" : pdfSrc?.includes("Airline_Service_Analysis") ? "Airline Service — Report" : "Hotel Management SAD — Slides"}</span>
                 <div className="flex items-center gap-2">
                   <a href={pdfSrc} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-3 py-1 text-xs font-medium text-black hover:bg-zinc-100">Open raw ↗</a>
                   <button onClick={() => setPdfSrc(null)} aria-label="Close" className="grid h-8 w-8 place-items-center rounded-full bg-white/15 text-white hover:bg-white/25">✕</button>
