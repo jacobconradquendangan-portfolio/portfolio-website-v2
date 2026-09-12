@@ -3,13 +3,20 @@
 import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Star, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Search, Star, TrendingUp } from "lucide-react";
 import { GithubIcon } from "./icons";
 import SectionHeading from "./SectionHeading";
 import { projects, projectCategories } from "@/data/portfolio";
 
+const highlightStyle: Record<string, string> = {
+  "Industry Award": "bg-indigo-600",
+  "System Architecture": "bg-slate-900",
+  "Data Analytics": "bg-teal-600",
+};
+
 export default function Projects() {
   const [category, setCategory] = useState<(typeof projectCategories)[number]>("All");
+  const [query, setQuery] = useState("");
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [pdfSrc, setPdfSrc] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -18,9 +25,32 @@ export default function Projects() {
     () => true,
     () => false,
   );
-    const filtered = category === "All" ? projects : projects.filter((p) => p.category === category);
-    const visible = category === "All" && !showAll ? filtered.slice(0, 5) : filtered;
-    const hiddenCount = filtered.length - visible.length;
+
+  const counts = {
+    All: projects.length,
+    "Industry Award": projects.filter((p) => p.category === "Industry Award").length,
+    "System Architecture": projects.filter((p) => p.category === "System Architecture").length,
+    "Data Analytics": projects.filter((p) => p.category === "Data Analytics").length,
+  } as const;
+
+  const byCategory = category === "All" ? projects : projects.filter((p) => p.category === category);
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? byCategory.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.tags.some((t) => t.toLowerCase().includes(q)) ||
+          p.highlight.toLowerCase().includes(q),
+      )
+    : byCategory;
+
+  // Featured hero: CV Builder when it passes current filters
+  const hero = filtered.find((p) => p.title === "Full-Stack CV Builder (Agentic Workflow)");
+  const gridFiltered = hero ? filtered.filter((p) => p !== hero) : filtered;
+  const visibleGrid = category === "All" && !q && !showAll ? gridFiltered.slice(0, 6) : gridFiltered;
+  const hiddenCount = gridFiltered.length - visibleGrid.length;
+  const showToggle = category === "All" && !q && gridFiltered.length > 6;
 
   return (
     <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
@@ -30,28 +60,92 @@ export default function Projects() {
         copy="Industry awards, systems architecture, and data analytics — every project documented on GitHub."
       />
 
-      <div className="mt-8 flex flex-wrap gap-2">
-        {projectCategories.map((c) => (
-          <button
-            key={c}
-            onClick={() => {
-              setCategory(c);
+      {/* filters with counts + search aligned */}
+      <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-wrap gap-2">
+          {projectCategories.map((c) => (
+            <button
+              key={c}
+              onClick={() => {
+                setCategory(c);
+                setShowAll(false);
+              }}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                category === c
+                  ? "bg-slate-900 text-white shadow-lg dark:bg-white dark:text-black"
+                  : "border border-black/10 text-zinc-600 hover:bg-black/[.05] dark:border-white/15 dark:text-zinc-400 dark:hover:bg-white/[.07]"
+              }`}
+            >
+              {c} <span className={`ml-1.5 rounded-full px-2 py-0.5 text-xs ${category === c ? "bg-white/15 text-white" : "bg-black/[.06] text-zinc-600 dark:bg-white/[.08] dark:text-zinc-400"}`}>{counts[c as keyof typeof counts]}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="relative w-full max-w-md shrink-0">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
+          <input
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
               setShowAll(false);
             }}
-            className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-              category === c
-                ? "bg-slate-900 text-white shadow-lg dark:bg-white dark:text-black"
-                : "border border-black/10 text-zinc-600 hover:bg-black/[.05] dark:border-white/15 dark:text-zinc-400 dark:hover:bg-white/[.07]"
-            }`}
-          >
-            {c}
-          </button>
-        ))}
+            placeholder="⌕ Filter by tech… e.g. Figma, Python"
+            className="w-full rounded-full border border-black/10 bg-white py-2.5 pl-9 pr-9 text-sm placeholder:text-zinc-400 focus:border-violet-300 focus:outline-none focus:ring-4 focus:ring-violet-500/15 dark:border-white/15 dark:bg-white/[.04] dark:placeholder:text-zinc-500"
+          />
+          {q && (
+            <button onClick={() => setQuery("")} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/[.06] px-2.5 py-1 text-xs dark:bg-white/[.08]">Clear</button>
+          )}
+        </div>
       </div>
+      {q && <p className="mt-3 text-xs text-zinc-500">{filtered.length} result{filtered.length !== 1 ? "s" : ""} for “{q}”</p>}
 
-      <motion.div layout className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {/* Featured hero — horizontal banner */}
+      {hero && (
+        <motion.div layout className="mt-8 overflow-hidden rounded-3xl border border-black/[.07] bg-white shadow-sm dark:border-white/[.09] dark:bg-slate-900">
+          <div className="grid md:grid-cols-[1.15fr_1fr]">
+            <div className="relative h-64 overflow-hidden bg-black md:h-auto md:min-h-[320px]">
+              {hero.image ? (
+                <Image src={hero.image} alt={hero.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" priority />
+              ) : (
+                <div className={`absolute inset-0 bg-gradient-to-br ${hero.gradient}`} />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent md:hidden" />
+              <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-black backdrop-blur">
+                <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" /> Featured
+              </span>
+            </div>
+            <div className="flex flex-col p-6 sm:p-8">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[hero.category] ?? "bg-violet-500"}`} />
+                <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{hero.category}</span>
+                <span className={`rounded-full px-2.5 py-1 text-xs font-medium text-white ${highlightStyle[hero.category] ?? "bg-violet-600"}`}>{hero.highlight}</span>
+              </div>
+              <h3 className="mt-3 text-2xl font-bold tracking-tight">{hero.title}</h3>
+              <p className="mt-3 line-clamp-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400">{hero.description}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {hero.tags.map((t) => (
+                  <span key={t} className="rounded-full bg-black/[.05] px-2.5 py-1 text-xs font-medium dark:bg-white/[.07]">{t}</span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href={hero.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-black dark:bg-white dark:text-black">
+                  <GithubIcon className="h-4 w-4" /> View on GitHub
+                </a>
+                {hero.live && (
+                  <a href={hero.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-medium hover:border-violet-300 hover:text-violet-600 dark:border-white/15">Live ↗</a>
+                )}
+                {hero.video && (
+                  <button onClick={() => setVideoSrc(hero.video!)} className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-medium hover:border-violet-300 hover:text-violet-600 dark:border-white/15">Video ▶</button>
+                )}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      <motion.div layout className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
-          {visible.map((p, idx) => (
+          {visibleGrid.map((p, idx) => (
             <motion.article
               layout
               key={p.title}
@@ -59,18 +153,18 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.3 }}
-              className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white dark:border-white/[.09] dark:bg-slate-900 ${p.title === "Full-Stack CV Builder (Agentic Workflow)" ? "md:col-span-2 lg:col-span-2" : ""}`}
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/[.07] bg-white dark:border-white/[.09] dark:bg-slate-900"
             >
-              <div className={`relative overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5 ${p.title === "Full-Stack CV Builder (Agentic Workflow)" ? "h-56" : "h-48"}`}>
+              <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (
                   <>
-                    <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 2} />
+                    <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 1 && !hero} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
                   </>
                 ) : (
                   <div className="bg-grid absolute inset-0 opacity-40" />
                 )}
-                <span className="relative inline-flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+                <span className={`relative inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-white backdrop-blur ${highlightStyle[p.category] ?? "bg-black/25"}`}>
                   <TrendingUp className="h-3.5 w-3.5" /> {p.highlight}
                 </span>
                 {p.featured && (
@@ -92,7 +186,7 @@ export default function Projects() {
                 </a>
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className={`font-bold tracking-tight ${p.title === "Full-Stack CV Builder (Agentic Workflow)" ? "text-xl" : "text-lg"}`}>{p.title}</h3>
+                <h3 className="text-lg font-bold tracking-tight">{p.title}</h3>
                 <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                   {p.description}
                 </p>
@@ -149,13 +243,17 @@ export default function Projects() {
         </AnimatePresence>
       </motion.div>
 
-      {category === "All" && filtered.length > 5 && (
+      {filtered.length === 0 && (
+        <p className="mt-8 rounded-2xl border border-dashed border-black/10 bg-white p-8 text-center text-sm text-zinc-500 dark:border-white/10 dark:bg-white/[.03]">No matches for “{q}” in {category}. Try another tech or category.</p>
+      )}
+
+      {showToggle && (
         <div className="mt-6 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
             className="rounded-full border border-black/10 bg-white px-6 py-2.5 text-sm font-medium shadow-sm transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
           >
-            {showAll ? "Show less ↑" : `Show all ${filtered.length} projects (${hiddenCount} more) ↓`}
+            {showAll ? "Show less ↑" : `Show all ${gridFiltered.length} projects (${hiddenCount} more) ↓`}
           </button>
         </div>
       )}
