@@ -22,7 +22,7 @@ export default function Certifications() {
         title="Certifications & leadership"
         copy="Professional certifications and Tech Lead roles across 5+ major conferences."
       />
-      <Stagger className="mt-10 grid gap-5 md:grid-cols-2">
+      <Stagger className="mt-10 grid gap-6 md:grid-cols-2">
         {certifications.map((c, i) => {
           const Icon = icons[i % icons.length];
           const certPdf = (c as any).pdf as string | undefined;

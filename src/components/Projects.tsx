@@ -150,7 +150,7 @@ export default function Projects() {
         </motion.div>
       )}
 
-      <motion.div layout className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <motion.div layout className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
           {visibleGrid.map((p, idx) => (
             <motion.article
@@ -160,7 +160,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.3 }}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-white/[.09] dark:bg-slate-900"
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900"
             >
               <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (

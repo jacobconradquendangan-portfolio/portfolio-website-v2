@@ -26,7 +26,7 @@ export default function Skills() {
           <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-zinc-600 dark:border-white/15 dark:bg-white/[.06] dark:text-zinc-400">{skills.reduce((n, g) => n + g.items.length, 0)} technologies</span>
           <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-900/30 dark:text-emerald-300 flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Agentic AI in progress</span>
         </div>
-        <Stagger className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((g) => {
             const Icon = icons[g.icon] ?? Code2;
             return (

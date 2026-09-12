@@ -17,7 +17,7 @@ export default function About() {
         title="From classroom to production"
         copy="I'm Jacob — 16+ documented projects deep, from a 1st-place Industry Choice transit platform to a 92%-accuracy ML classifier. I've led tech teams, spoken at 5+ conferences, and I treat every build like it has real users. Currently open to internships where I can do the same."
       />
-      <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <Stagger className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {values.map((v) => (
           <StaggerItem key={v.title}>
             <div className="group h-full rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-slate-900/[.07] dark:border-white/[.09] dark:bg-white/[.03]">
