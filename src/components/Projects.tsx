@@ -19,6 +19,7 @@ export default function Projects() {
   const [query, setQuery] = useState("");
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [pdfSrc, setPdfSrc] = useState<string | null>(null);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
   const mounted = useSyncExternalStore(
     () => () => {},
@@ -224,6 +225,13 @@ export default function Projects() {
                       >
                         {p.title === "Wine Data Mining" || p.title === "Airline Regression" ? "Report ↗" : "Slides ↗"}
                       </button>
+                    ) : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") || p.live.endsWith(".webp") ? (
+                      <button
+                        onClick={() => setImageSrc(p.live!)}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                      >
+                        Certificate ↗
+                      </button>
                     ) : (
                       <a
                         href={p.live}
@@ -231,7 +239,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                       >
-                        {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") ? "Certificate ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
+                        {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
                       </a>
                     )
                   )}
@@ -322,6 +330,34 @@ export default function Projects() {
                 </div>
               </div>
               <iframe src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfSrc)}`} title="Slides" className="h-full w-full flex-1 border-0" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {imageSrc && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+            onClick={() => setImageSrc(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.96, opacity: 0 }}
+              className="relative flex max-h-[85vh] w-[95%] max-w-3xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between border-b border-zinc-200 bg-slate-900 px-4 py-3 text-sm text-white">
+                <span className="truncate font-medium">{imageSrc.includes("industry_choice") ? "MNLFlow — Industry Choice Award" : "CESCon — Highest Sales Award"}</span>
+                <button onClick={() => setImageSrc(null)} aria-label="Close" className="grid h-8 w-8 place-items-center rounded-full bg-white/15 text-white hover:bg-white/25">✕</button>
+              </div>
+              <div className="flex flex-1 items-center justify-center overflow-auto bg-zinc-100 p-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={imageSrc} alt="Certificate" className="max-h-[70vh] max-w-full object-contain shadow-lg" />
+              </div>
             </motion.div>
           </motion.div>
         )}
