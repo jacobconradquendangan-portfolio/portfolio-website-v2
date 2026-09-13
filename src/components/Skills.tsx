@@ -22,17 +22,17 @@ export default function Skills() {
           copy="Technologies and tools I use to turn data into decisions and ideas into interfaces."
         />
         <div className="mt-6 flex flex-wrap gap-2 text-xs font-medium">
-          <span className="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-900/30 dark:text-indigo-300">6 domains</span>
-          <span className="rounded-full border border-black/10 bg-white px-3 py-1 text-zinc-600 dark:border-white/15 dark:bg-white/[.06] dark:text-zinc-400">{skills.reduce((n, g) => n + g.items.length, 0)} technologies</span>
-          <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-900/30 dark:text-emerald-300 flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Agentic AI in progress</span>
+          <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">6 domains</span>
+          <span className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">{skills.reduce((n, g) => n + g.items.length, 0)} technologies</span>
+          <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-zinc-500 animate-pulse" /> Agentic AI in progress</span>
         </div>
         <Stagger className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((g) => {
             const Icon = icons[g.icon] ?? Code2;
             return (
               <StaggerItem key={g.category}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg dark:border-white/[.09] dark:bg-slate-900">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-md dark:border-white/[.09] dark:bg-slate-900">
+                  <div className="absolute inset-x-0 top-0 h-1 bg-slate-900 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-white" />
                   <div className="flex items-start gap-4">
                     <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-slate-900 text-white shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:rotate-1">
                       <Icon className="h-5 w-5" />
@@ -49,7 +49,7 @@ export default function Skills() {
                           key={s}
                           className="inline-flex items-center gap-1.5 rounded-full bg-black/[.05] px-3 py-1 text-xs font-medium transition hover:bg-black/[.09] dark:bg-white/[.07] dark:hover:bg-white/[.12]"
                         >
-                          <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 group-hover:bg-violet-400 transition-colors" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 group-hover:bg-zinc-600 transition-colors" />
                           {s}
                         </span>
                       ))}
