@@ -4,7 +4,7 @@ export const profile = {
   photo: "/profile.jpg",
   role: "Information Systems Student • Data, UX & Agentic AI",
   tagline:
-    "I'm an Information Systems student focused on turning complex data into decisions and ideas into polished interfaces with Next.js. I'm currently exploring Agentic AI — integrating autonomous coding agents like Cline directly into my development workflow to build AI-driven applications that act, not just answer.",
+    "I'm a 4th-year Information Systems student at CIIT College of Innovation and Integrated Technology (expected graduation 2027), focused on turning complex data into decisions and ideas into polished interfaces with Next.js. Currently, I'm exploring Agentic AI—integrating autonomous coding agents like Cline directly into my development workflow to build AI-driven applications that act, not just answer.",
   location: "Philippines • Remote",
   email: "jacobconradquendangan@gmail.com",
   availability: "Open to internships & collaborations",
