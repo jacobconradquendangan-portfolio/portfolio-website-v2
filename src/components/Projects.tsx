@@ -111,7 +111,7 @@ export default function Projects() {
       {hero && (
         <motion.div layout className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_4px_20px_rgba(15,23,42,0.08)] dark:border-white/[.09] dark:bg-slate-900">
           <div className="grid md:grid-cols-[1.15fr_1fr]">
-            <div className="relative h-56 overflow-hidden bg-black sm:h-64 md:h-auto md:min-h-[320px]">
+            <div className="relative h-56 overflow-hidden border-b border-zinc-100 bg-black sm:h-64 dark:border-zinc-800 md:h-auto md:min-h-[320px]">
               {hero.image ? (
                 <Image src={hero.image} alt={hero.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" priority />
               ) : (
@@ -163,7 +163,7 @@ export default function Projects() {
               transition={{ duration: 0.3 }}
               className="group mx-auto flex h-full w-full max-w-\[352px\] flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900"
             >
-              <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
+              <div className={`relative h-48 overflow-hidden border-b border-zinc-100 dark:border-zinc-800 ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (
                   <>
                     <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 1 && !hero} />
