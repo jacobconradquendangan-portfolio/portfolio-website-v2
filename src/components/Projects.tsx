@@ -126,15 +126,14 @@ export default function Projects() {
               <div className="flex flex-wrap items-center gap-2">
                 <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[hero.category] ?? "bg-violet-500"}`} />
                 <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{hero.category}</span>
-                <span className={`rounded-md px-2 py-1 text-xs font-medium text-white sm:rounded-full sm:px-2.5 ${highlightStyle[hero.category] ?? "bg-violet-600"}`}>{hero.highlight}</span>
               </div>
-              <h3 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">{hero.title}</h3>
-              <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:line-clamp-4">{hero.description}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
+              <div className="mt-3 flex flex-wrap gap-1.5">
                 {hero.tags.map((t) => (
                   <span key={t} className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">{t}</span>
                 ))}
               </div>
+              <h3 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">{hero.title}</h3>
+              <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:line-clamp-4">{hero.description}</p>
               <div className="mt-6 flex flex-wrap gap-2 border-t border-zinc-100 pt-4 dark:border-zinc-800 sm:gap-3 sm:pt-6">
                 <a href={hero.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-black sm:px-4 sm:py-2 sm:text-sm">
                   <GithubIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> View on GitHub
@@ -192,11 +191,7 @@ export default function Projects() {
                   <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[p.category] ?? "bg-zinc-900"}`} />
                   <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{p.category}</span>
                 </div>
-                <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{p.title}</h3>
-                <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                  {p.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="mt-3 flex flex-wrap gap-1.5">
                   {p.tags.slice(0, 3).map((t) => (
                     <span key={t} className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                       {t}
@@ -206,6 +201,10 @@ export default function Projects() {
                     <span className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500 dark:bg-white/[.05]">+{p.tags.length - 3}</span>
                   )}
                 </div>
+                <h3 className="mt-3 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{p.title}</h3>
+                <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  {p.description}
+                </p>
                 <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
                   <a
                     href={p.github}
