@@ -136,14 +136,14 @@ export default function Projects() {
                 ))}
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href={hero.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">
+                <a href={hero.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-black">
                   <GithubIcon className="h-4 w-4" /> View on GitHub
                 </a>
                 {hero.live && (
-                  <a href={hero.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-white/15">Live ↗</a>
+                  <a href={hero.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-white/15">Live ↗</a>
                 )}
                 {hero.video && (
-                  <button onClick={() => setVideoSrc(hero.video!)} className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-white/15">Video ▶</button>
+                  <button onClick={() => setVideoSrc(hero.video!)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-white/15">Video ▶</button>
                 )}
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function Projects() {
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-black"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-black"
                   >
                     <GithubIcon className="h-3.5 w-3.5" /> View on GitHub
                   </a>
@@ -221,14 +221,14 @@ export default function Projects() {
                     p.live.endsWith(".pdf") ? (
                       <button
                         onClick={() => setPdfSrc(p.live!)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                       >
                         {p.title === "Wine Data Mining" || p.title === "Airline Regression" ? "Report ↗" : "Slides ↗"}
                       </button>
                     ) : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") || p.live.endsWith(".webp") ? (
                       <button
                         onClick={() => setImageSrc(p.live!)}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                       >
                         Certificate ↗
                       </button>
@@ -237,7 +237,7 @@ export default function Projects() {
                         href={p.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                       >
                         {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
                       </a>
@@ -246,7 +246,7 @@ export default function Projects() {
                   {p.video && (
                     <button
                       onClick={() => setVideoSrc(p.video!)}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
                     >
                       Video ▶
                     </button>
