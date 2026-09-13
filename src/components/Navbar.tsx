@@ -87,14 +87,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#contact"
-            onClick={(e) => handleNav(e, "#contact")}
-            className="group hidden items-center gap-1.5 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white transition hover:shadow-lg hover:shadow-slate-900/20 sm:inline-flex dark:bg-white dark:text-black"
+          <span
+            title="CV is being updated — check back soon"
+            aria-label="CV updating"
+            className="group hidden cursor-not-allowed items-center gap-1.5 rounded-full bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-white/80 sm:inline-flex"
           >
-            Hire Me
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+            CV — Updating
+            <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />
+          </span>
           <button
             onClick={() => setOpen(!open)}
             aria-label="Menu"
