@@ -127,9 +127,9 @@ export default function Projects() {
                 <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[hero.category] ?? "bg-violet-500"}`} />
                 <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{hero.category}</span>
               </div>
-              <div className="mt-3 flex flex-wrap gap-1.5">
+              <div className="mt-3 flex flex-wrap gap-1.5 lg:flex-nowrap lg:overflow-hidden">
                 {hero.tags.map((t) => (
-                  <span key={t} className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">{t}</span>
+                  <span key={t} className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium whitespace-nowrap shrink-0 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">{t}</span>
                 ))}
               </div>
               <h3 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">{hero.title}</h3>
@@ -191,14 +191,21 @@ export default function Projects() {
                   <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[p.category] ?? "bg-zinc-900"}`} />
                   <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{p.category}</span>
                 </div>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {p.tags.slice(0, 3).map((t) => (
-                    <span key={t} className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                <div className="mt-3 flex flex-wrap gap-1.5 lg:hidden">
+                  {p.tags.map((t) => (
+                    <span key={t} className="whitespace-nowrap shrink-0 rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                       {t}
                     </span>
                   ))}
-                  {p.tags.length > 3 && (
-                    <span className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500 dark:bg-white/[.05]">+{p.tags.length - 3}</span>
+                </div>
+                <div className="mt-3 hidden flex-nowrap gap-1.5 overflow-hidden lg:flex">
+                  {p.tags.slice(0, 2).map((t) => (
+                    <span key={t} className="whitespace-nowrap shrink-0 rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                      {t}
+                    </span>
+                  ))}
+                  {p.tags.length > 2 && (
+                    <span className="whitespace-nowrap shrink-0 rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500 dark:bg-zinc-800">+{p.tags.length - 2}</span>
                   )}
                 </div>
                 <h3 className="mt-3 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{p.title}</h3>
