@@ -90,10 +90,10 @@ const G = {
 
 export const projects: (Project & { gradient: string })[] = [
   {
-    title: "Full-Stack CV Builder (Agentic Workflow)",
+    title: "CV Builder",
     description:
       "A real-time Next.js application that transforms user inputs into polished, structured resumes. Engineered using Cline in VS Code to explore modern agentic workflows — leveraging autonomous AI to accelerate component architecture, state management, and rapid feature iteration.",
-    tags: ["Next.js", "Full-Stack", "Cline", "Agentic Workflow"],
+    tags: ["Next.js", "Frontend", "Cline", "Agentic Workflow"],
     github: "https://github.com/jacobconradquendangan-portfolio/CV-Builder",
     live: "https://cv-builder-eight-tan.vercel.app/",
     category: "System Architecture",

@@ -54,7 +54,7 @@ export default function Projects() {
     : byCategory;
 
   // Featured hero: CV Builder when it passes current filters
-  const hero = filtered.find((p) => p.title === "Full-Stack CV Builder (Agentic Workflow)");
+  const hero = filtered.find((p) => p.title === "CV Builder");
   const gridFiltered = hero ? filtered.filter((p) => p !== hero) : filtered;
   const visibleGrid = category === "All" && !q && !showAll ? gridFiltered.slice(0, 6) : gridFiltered;
   const hiddenCount = gridFiltered.length - visibleGrid.length;
