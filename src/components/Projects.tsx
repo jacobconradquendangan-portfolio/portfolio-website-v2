@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Search, Star, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Search, Star } from "lucide-react";
 import { GithubIcon } from "./icons";
 import SectionHeading from "./SectionHeading";
 import { projects, projectCategories } from "@/data/portfolio";
@@ -172,9 +172,6 @@ export default function Projects() {
                 ) : (
                   <div className="bg-grid absolute inset-0 opacity-40" />
                 )}
-                <span className={`relative inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-white backdrop-blur ${highlightStyle[p.category] ?? "bg-black/25"}`}>
-                  <TrendingUp className="h-3.5 w-3.5" /> {p.highlight}
-                </span>
                 {p.featured && (
                   <span className="absolute top-5 right-5 inline-flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-black">
                     <Star className="h-3 w-3 fill-amber-500 text-amber-500" /> Featured
