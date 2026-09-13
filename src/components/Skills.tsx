@@ -31,10 +31,10 @@ export default function Skills() {
             const Icon = icons[g.icon] ?? Code2;
             return (
               <StaggerItem key={g.category}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg dark:border-white/[.09] dark:bg-slate-900">
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-violet-300 hover:shadow-lg dark:border-white/[.09] dark:bg-slate-900">
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                   <div className="flex items-start gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-900 text-white shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:rotate-1">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-slate-900 text-white shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:rotate-1">
                       <Icon className="h-5 w-5" />
                     </span>
                     <div className="min-w-0">

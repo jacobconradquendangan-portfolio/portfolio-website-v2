@@ -50,8 +50,8 @@ export default function Contact() {
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.35fr_1fr]">
           <Reveal className="h-full">
-            <div className="h-full rounded-[26px] bg-gradient-to-br from-violet-500 via-fuchsia-500 to-orange-400 p-[1.5px] shadow-2xl shadow-fuchsia-500/10">
-              <div className="flex h-full flex-col justify-between rounded-[25px] bg-slate-900 p-8 text-white sm:p-10 dark:bg-black">
+            <div className="h-full rounded-lg bg-gradient-to-br from-violet-500 via-fuchsia-500 to-orange-400 p-[1.5px] shadow-2xl shadow-fuchsia-500/10">
+              <div className="flex h-full flex-col justify-between rounded-lg bg-slate-900 p-8 text-white sm:p-10 dark:bg-black">
                 <div>
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[.06] px-3 py-1 text-xs font-medium">
                     <span className="relative flex h-2 w-2">
@@ -106,9 +106,9 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group flex h-full items-center gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900"
+                  className="group flex h-full items-center gap-4 rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900"
                 >
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-slate-900 text-white transition-transform group-hover:scale-105 dark:bg-white dark:text-black">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-slate-900 text-white transition-transform group-hover:scale-105 dark:bg-white dark:text-black">
                     <c.icon className="h-5 w-5" />
                   </span>
                   <span className="min-w-0 flex-1">
@@ -121,7 +121,7 @@ export default function Contact() {
             ))}
 
             <StaggerItem className="flex-1">
-              <div className="flex h-full items-center gap-4 rounded-3xl bg-gradient-to-br from-violet-600 via-fuchsia-600 to-orange-500 p-6 text-white shadow-xl shadow-fuchsia-500/20">
+              <div className="flex h-full items-center gap-4 rounded-lg bg-gradient-to-br from-violet-600 via-fuchsia-600 to-orange-500 p-6 text-white shadow-xl shadow-fuchsia-500/20">
                 <span className="text-3xl font-bold">3+</span>
                 <p className="text-sm leading-5 opacity-90">
                   years turning coursework into award-winning, shipped work

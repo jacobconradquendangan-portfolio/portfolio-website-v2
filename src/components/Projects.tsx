@@ -109,7 +109,7 @@ export default function Projects() {
 
       {/* Featured hero — horizontal banner */}
       {hero && (
-        <motion.div layout className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_4px_20px_rgba(15,23,42,0.08)] dark:border-white/[.09] dark:bg-slate-900">
+        <motion.div layout className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_4px_20px_rgba(15,23,42,0.08)] dark:border-white/[.09] dark:bg-slate-900">
           <div className="grid md:grid-cols-[1.15fr_1fr]">
             <div className="relative h-64 overflow-hidden bg-black md:h-auto md:min-h-[320px]">
               {hero.image ? (
@@ -161,7 +161,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.3 }}
-              className="group mx-auto flex h-full w-full max-w-\[352px\] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900"
+              className="group mx-auto flex h-full w-full max-w-\[352px\] flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900"
             >
               <div className={`relative h-48 overflow-hidden ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (

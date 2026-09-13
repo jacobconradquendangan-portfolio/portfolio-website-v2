@@ -29,8 +29,8 @@ export default function Certifications() {
           const certGallery = (c as any).gallery as string[] | undefined;
           return (
             <StaggerItem key={c.title}>
-              <div className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg">
+              <div className="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900">
+                <span className="grid h-11 w-11 place-items-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg">
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-lg font-bold tracking-tight">{c.title}</h3>
@@ -82,7 +82,7 @@ export default function Certifications() {
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
-              className="relative flex h-[85vh] w-[95%] max-w-4xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl"
+              className="relative flex h-[85vh] w-[95%] max-w-4xl flex-col overflow-hidden rounded-lg border border-white/10 bg-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between border-b border-zinc-200 bg-slate-900 px-4 py-3 text-sm text-white">
@@ -116,7 +116,7 @@ export default function Certifications() {
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
-              className="relative flex h-[85vh] w-[95%] max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl"
+              className="relative flex h-[85vh] w-[95%] max-w-5xl flex-col overflow-hidden rounded-lg border border-white/10 bg-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between border-b border-zinc-200 bg-slate-900 px-4 py-3 text-sm text-white">
@@ -125,7 +125,7 @@ export default function Certifications() {
               </div>
               <div className="grid flex-1 gap-4 overflow-auto bg-zinc-100 p-4 sm:grid-cols-2">
                 {gallery.map((src) => (
-                  <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
+                  <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={src} alt={activeTitle} className="h-full w-full object-contain" />
                   </a>
