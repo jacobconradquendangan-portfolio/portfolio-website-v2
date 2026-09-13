@@ -45,7 +45,7 @@ export default function Certifications() {
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                      className="cert-link group inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
+                      className="cert-link group inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                     >
                       <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">View certificates</span>
                     </motion.button>
@@ -55,7 +55,7 @@ export default function Certifications() {
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                      className="cert-link group inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
+                      className="cert-link group inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                     >
                       <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">View certificate</span>
                     </motion.button>
@@ -67,7 +67,7 @@ export default function Certifications() {
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                      className="cert-link group inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
+                      className="cert-link group inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                     >
                       <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">View credentials</span>
                     </motion.a>
