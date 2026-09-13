@@ -135,7 +135,7 @@ export default function Projects() {
                   <span key={t} className="rounded-full bg-black/[.05] px-2.5 py-1 text-xs font-medium dark:bg-white/[.07]">{t}</span>
                 ))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3 border-t border-zinc-100 pt-6 dark:border-zinc-800">
                 <a href={hero.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-black">
                   <GithubIcon className="h-4 w-4" /> View on GitHub
                 </a>
@@ -205,7 +205,7 @@ export default function Projects() {
                     <span className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-500 dark:bg-white/[.05]">+{p.tags.length - 3}</span>
                   )}
                 </div>
-                <div className="mt-4 flex flex-wrap items-center gap-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
                   <a
                     href={p.github}
                     target="_blank"
