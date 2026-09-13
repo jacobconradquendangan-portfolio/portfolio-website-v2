@@ -111,7 +111,7 @@ export default function Projects() {
       {hero && (
         <motion.div layout className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_4px_20px_rgba(15,23,42,0.08)] dark:border-white/[.09] dark:bg-slate-900">
           <div className="grid md:grid-cols-[1.15fr_1fr]">
-            <div className="relative h-56 overflow-hidden border-b border-zinc-100 bg-black sm:h-64 dark:border-zinc-800 md:h-auto md:min-h-[320px]">
+            <div className="relative h-56 overflow-hidden border-b border-zinc-200 bg-black sm:h-64 dark:border-zinc-700 md:h-auto md:min-h-[320px]">
               {hero.image ? (
                 <Image src={hero.image} alt={hero.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" priority />
               ) : (
@@ -134,15 +134,15 @@ export default function Projects() {
               </div>
               <h3 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">{hero.title}</h3>
               <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:line-clamp-4">{hero.description}</p>
-              <div className="mt-6 flex flex-wrap gap-2 border-t border-zinc-100 pt-4 dark:border-zinc-800 sm:gap-3 sm:pt-6">
+              <div className="mt-6 flex flex-wrap gap-2 border-t border-zinc-100 pt-4 dark:border-zinc-700 sm:gap-3 sm:pt-6">
                 <a href={hero.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-black sm:px-4 sm:py-2 sm:text-sm">
                   <GithubIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> View on GitHub
                 </a>
                 {hero.live && (
-                  <a href={hero.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-zinc-800 sm:px-4 sm:py-2 sm:text-sm">Live ↗</a>
+                  <a href={hero.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">Live ↗</a>
                 )}
                 {hero.video && (
-                  <button onClick={() => setVideoSrc(hero.video!)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-zinc-800 sm:px-4 sm:py-2 sm:text-sm">Video ▶</button>
+                  <button onClick={() => setVideoSrc(hero.video!)} className="inline-flex items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold hover:border-violet-300 hover:text-violet-600 dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">Video ▶</button>
                 )}
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Projects() {
               transition={{ duration: 0.3 }}
               className="group mx-auto flex h-full w-full max-w-\[352px\] flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900"
             >
-              <div className={`relative h-48 overflow-hidden border-b border-zinc-100 dark:border-zinc-800 ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
+              <div className={`relative h-48 overflow-hidden border-b border-zinc-200 dark:border-zinc-700 ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (
                   <>
                     <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 1 && !hero} />
@@ -212,7 +212,7 @@ export default function Projects() {
                 <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                   {p.description}
                 </p>
-                <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
+                <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-700">
                   <a
                     href={p.github}
                     target="_blank"
