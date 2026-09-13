@@ -98,38 +98,65 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             aria-label="Menu"
+            aria-expanded={open}
             className="grid h-10 w-10 place-items-center rounded-full border border-black/10 md:hidden dark:border-white/15"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <motion.span
+              key={open ? "x" : "menu"}
+              initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              transition={{ duration: 0.18, ease: [0.21, 0.65, 0.16, 1] }}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </motion.span>
           </button>
         </div>
       </nav>
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-slate-200 bg-white/95 backdrop-blur-xl md:hidden dark:border-white/[.08] dark:bg-slate-900/95"
-          >
-            <div className="space-y-1 px-6 py-4">
-              {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={(e) => handleNav(e, l.href)}
-                  className={`block rounded-xl px-3 py-2.5 font-medium transition ${
-                    active === l.href
-                      ? "bg-black/[.06] text-black dark:bg-white/[.08] dark:text-white"
-                      : "hover:bg-black/5 dark:hover:bg-white/5"
-                  }`}
-                >
-                  {l.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 top-16 bg-black/10 backdrop-blur-sm md:hidden"
+              onClick={() => setOpen(false)}
+              aria-hidden
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
+              transition={{ duration: 0.32, ease: [0.21, 0.65, 0.16, 1] }}
+              className="absolute left-0 right-0 top-full overflow-hidden border-b border-slate-200 bg-white/95 shadow-lg backdrop-blur-xl md:hidden dark:border-white/[.08] dark:bg-slate-900/95"
+            >
+              <motion.div
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.06 } } }}
+                className="space-y-1 px-6 py-4"
+              >
+                {links.map((l) => (
+                  <motion.a
+                    key={l.href}
+                    href={l.href}
+                    onClick={(e) => handleNav(e, l.href)}
+                    variants={{ hidden: { opacity: 0, x: -10 }, show: { opacity: 1, x: 0, transition: { duration: 0.28, ease: [0.21, 0.65, 0.16, 1] } } }}
+                    className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                      active === l.href
+                        ? "bg-slate-900 text-white dark:bg-white dark:text-black"
+                        : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-white/[.06]"
+                    }`}
+                  >
+                    {l.label}
+                  </motion.a>
+                ))}
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
