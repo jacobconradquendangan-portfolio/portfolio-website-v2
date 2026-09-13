@@ -14,7 +14,7 @@ const icons: Record<string, typeof Code2> = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 border-y border-slate-200 bg-black/[.02] dark:border-white/[.06] dark:bg-white/[.02]">
+    <section id="skills" className="scroll-mt-24 border-y border-zinc-100 bg-white dark:border-white/[.06] dark:bg-white/[.02]">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <SectionHeading
           eyebrow="Skills"
@@ -26,37 +26,32 @@ export default function Skills() {
           <span className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">{skills.reduce((n, g) => n + g.items.length, 0)} technologies</span>
           <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-zinc-500 animate-pulse" /> Agentic AI in progress</span>
         </div>
-        <Stagger className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <Stagger className="mt-10 divide-y divide-zinc-100 border-y border-zinc-100 dark:divide-zinc-800 dark:border-zinc-800">
           {skills.map((g) => {
             const Icon = icons[g.icon] ?? Code2;
             return (
               <StaggerItem key={g.category}>
-                <div className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-md dark:border-white/[.09] dark:bg-slate-900">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-slate-900 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-white" />
-                  <div className="flex items-start gap-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-slate-900 text-white shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:rotate-1">
+                <div className="flex flex-col gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex gap-4 sm:min-w-[260px]">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <div className="min-w-0">
-                      <h3 className="font-semibold leading-tight">{g.category}</h3>
+                    <div>
+                      <h3 className="font-semibold leading-tight text-zinc-900 dark:text-zinc-100">{g.category}</h3>
                       <p className="mt-0.5 text-xs leading-4 text-zinc-500">{g.description}</p>
+                      <p className="mt-1 text-xs text-zinc-400">{g.items.length} tools</p>
                     </div>
                   </div>
-                  <div className="mt-5 flex-1 border-t border-slate-200 pt-4 dark:border-white/[.08]">
-                    <div className="flex flex-wrap gap-2">
-                      {g.items.map((s) => (
-                        <span
-                          key={s}
-                          className="inline-flex items-center gap-1.5 rounded-full bg-black/[.05] px-3 py-1 text-xs font-medium transition hover:bg-black/[.09] dark:bg-white/[.07] dark:hover:bg-white/[.12]"
-                        >
-                          <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 group-hover:bg-zinc-600 transition-colors" />
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mt-auto flex justify-end pt-3 text-xs text-zinc-400">
-                    <span>{g.items.length} tools</span>
+                  <div className="flex flex-wrap gap-2 sm:max-w-[60%] sm:justify-end">
+                    {g.items.map((s) => (
+                      <span
+                        key={s}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                      >
+                        {s}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </StaggerItem>
