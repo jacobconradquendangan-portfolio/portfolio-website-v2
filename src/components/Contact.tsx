@@ -63,7 +63,7 @@ export default function Contact() {
 
                   <a
                     href={`mailto:${profile.email}`}
-                    className="group mt-6 block text-lg font-bold tracking-tight break-all transition sm:text-xl"
+                    className="group mt-6 block break-all text-base font-bold tracking-tight transition sm:text-xl"
                   >
                     {profile.email}
                     <ArrowUpRight className="ml-2 inline h-5 w-5 text-zinc-500 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
