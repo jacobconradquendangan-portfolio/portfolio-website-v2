@@ -177,9 +177,6 @@ export default function Projects() {
                     <Star className="h-3 w-3 fill-amber-500 text-amber-500" /> Featured
                   </span>
                 )}
-                <span className="absolute bottom-3 left-5 rounded-full bg-black/25 px-2.5 py-0.5 font-mono text-[11px] text-white/90 backdrop-blur">
-                  {p.category}
-                </span>
                 <a
                   href={p.github}
                   target="_blank"
@@ -190,19 +187,23 @@ export default function Projects() {
                   <ArrowUpRight className="h-5 w-5" />
                 </a>
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-bold tracking-tight">{p.title}</h3>
+              <div className="flex flex-1 flex-col p-5">
+                <div className="flex items-center gap-2">
+                  <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[p.category] ?? "bg-zinc-900"}`} />
+                  <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{p.category}</span>
+                </div>
+                <h3 className="mt-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{p.title}</h3>
                 <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                   {p.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {p.tags.slice(0, 3).map((t) => (
-                    <span key={t} className="rounded-full bg-black/[.05] px-2.5 py-1 text-xs font-medium dark:bg-white/[.07]">
+                    <span key={t} className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                       {t}
                     </span>
                   ))}
                   {p.tags.length > 3 && (
-                    <span className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-500 dark:bg-white/[.05]">+{p.tags.length - 3}</span>
+                    <span className="rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500 dark:bg-white/[.05]">+{p.tags.length - 3}</span>
                   )}
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
