@@ -27,6 +27,8 @@ export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-[0.035]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-[#fafafa] dark:from-slate-900/70 dark:via-transparent dark:to-slate-900" />
         <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]" />
         <div className="animate-blob absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-violet-500/25 blur-[100px]" />
         <div className="animate-blob absolute top-10 right-1/4 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-[100px] [animation-delay:-6s]" />
