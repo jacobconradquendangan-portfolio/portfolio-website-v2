@@ -91,23 +91,23 @@ export default function Hero() {
               href={profile.links.cvBuilder}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.99 }}
-              transition={{ duration: 0.22, ease: [0.21, 0.65, 0.16, 1] }}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-400 px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 18 }}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-orange-400 px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl"
             >
-              <Star className="h-4 w-4 fill-white/90" /> CV Builder — Live
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              <Star className="h-4 w-4 fill-white/90 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" /> CV Builder — Live
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.a>
             <motion.a
               href="#projects"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.99 }}
-              transition={{ duration: 0.22, ease: [0.21, 0.65, 0.16, 1] }}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow duration-200 hover:shadow-xl dark:bg-white dark:text-black"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 18 }}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-shadow hover:shadow-xl dark:bg-white dark:text-black"
             >
               View my work
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.a>
           </motion.div>
 

@@ -17,6 +17,7 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
+      <style>{`.cert-link{position:relative;overflow:hidden}.cert-link::before{content:"";position:absolute;inset:0;border-radius:8px;background:linear-gradient(135deg,#8b5cf6,#ec4899,#f97316);opacity:0;transition:opacity .3s;z-index:0}.cert-link:hover::before{opacity:1}.cert-link:hover{color:#fff!important;border-color:transparent!important;box-shadow:0 8px 24px rgb(124 58 237 / .28)!important;transform:translateY(-2px) scale(1.04)}.cert-link:active{transform:translateY(0) scale(.98)!important}.cert-link>svg,.cert-link>span{position:relative;z-index:1}`}</style>
       <SectionHeading
         eyebrow="Credentials"
         title="Certifications & leadership"
@@ -39,28 +40,37 @@ export default function Certifications() {
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
                   {certGallery ? (
-                    <button
+                    <motion.button
                       onClick={() => setGallery(certGallery)}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 transition hover:text-black dark:hover:text-white"
+                      whileHover={{ scale: 1.04, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                      className="cert-link group inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                     >
-                      <GithubIcon className="h-4 w-4" /> View certificates →
-                    </button>
+                      <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">View certificates</span>
+                    </motion.button>
                   ) : certPdf ? (
-                    <button
+                    <motion.button
                       onClick={() => setPdf(certPdf)}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 transition hover:text-black dark:hover:text-white"
+                      whileHover={{ scale: 1.04, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                      className="cert-link group inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                     >
-                      <GithubIcon className="h-4 w-4" /> View certificate →
-                    </button>
+                      <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">View certificate</span>
+                    </motion.button>
                   ) : (
-                    <a
+                    <motion.a
                       href={c.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 transition hover:text-black dark:hover:text-white"
+                      whileHover={{ scale: 1.04, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                      className="cert-link group inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-sm backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
                     >
-                      <GithubIcon className="h-4 w-4" /> View credentials →
-                    </a>
+                      <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">View credentials</span>
+                    </motion.a>
                   )}
                 </div>
               </div>
