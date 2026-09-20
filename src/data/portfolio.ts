@@ -308,8 +308,16 @@ export const projects: (Project & { gradient: string })[] = [
 export const certifications = [
   {
     title: "HubSpot Certifications",
+    issuer: "HubSpot Academy",
     description:
-      "Professional certifications in inbound marketing, sales, and customer service with practical implementation.",
+      "Two product certifications covering the Marketing Hub and Sales Hub — CRM, automation, and inbound methodology with practical implementation.",
+    highlight: "2 Certificates",
+    tone: "orange",
+    details: [
+      { label: "Certificates", value: "Marketing & Sales Hub" },
+      { label: "Provider", value: "HubSpot Academy" },
+      { label: "Focus", value: "Inbound & CRM" },
+    ],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/HubSpot_Certs",
     gallery: [
@@ -319,25 +327,65 @@ export const certifications = [
   },
   {
     title: "Leadership Portfolio",
+    issuer: "Tech Leadership & Speaking",
     description:
-      "Proof of Tech Lead roles and institutional speaking engagements, including 5+ major conferences.",
+      "Tech Lead roles and institutional speaking engagements across 5+ major conferences — leading teams, shipping projects, and presenting technical work.",
+    highlight: "5+ Conferences",
+    tone: "violet",
+    details: [
+      { label: "Role", value: "Tech Lead" },
+      { label: "Engagements", value: "5+ Conferences" },
+      { label: "Focus", value: "Leadership & Speaking" },
+    ],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/Leadership_Speaking",
   },
   {
     title: "Lean Six Sigma White Belt",
+    issuer: "Lean Six Sigma • White Belt Level",
     description:
       "Certified in Lean Six Sigma fundamentals — waste reduction, process mapping, and continuous improvement methodology.",
+    highlight: "Certified",
+    tone: "sky",
+    details: [
+      { label: "Level", value: "White Belt" },
+      { label: "Method", value: "DMAIC Basics" },
+      { label: "Focus", value: "Process Improvement" },
+    ],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert",
     pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert/Official_Certification_Issued_Lean_Six_Sigma_White_Belt_Certification.png",
   },
   {
-    title: "AI Engineering Workshop (Cursor)",
+    title: "AI Engineering Workshop",
+    issuer: "CIIT College of Innovation and Integrated Technology",
     description:
       "Hands-on workshop in AI-assisted software development with Cursor — agentic coding workflows, LLM integration, and shipping AI-driven features.",
+    highlight: "Hands-on Workshop",
+    tone: "emerald",
+    details: [
+      { label: "Host", value: "CIIT" },
+      { label: "Tooling", value: "Cursor" },
+      { label: "Focus", value: "Agentic Coding & LLMs" },
+    ],
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/Tech_Certificate_AI_Engineering_for_Software_Development",
     pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Tech_Certificate_AI_Engineering_for_Software_Development/jacob_quendangan.png",
+  },
+  {
+    title: "Career Service Professional Eligibility",
+    issuer: "Civil Service Commission • Republic of the Philippines",
+    description:
+      "Second-level eligibility for career positions in government service, earned by passing the CSC Professional examination.",
+    highlight: "Passed — Rating 83.80%",
+    tone: "amber",
+    details: [
+      { label: "Exam date", value: "March 12, 2017" },
+      { label: "Testing center", value: "Malolos, Bulacan" },
+      { label: "Control no.", value: "R3-170525-015" },
+    ],
+    github:
+      "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/CSC-Professional",
+    pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/CSC-Professional/csc-certificate.jpg",
   },
 ];

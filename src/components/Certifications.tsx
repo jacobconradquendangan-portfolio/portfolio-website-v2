@@ -28,6 +28,7 @@ export default function Certifications() {
           const Icon = icons[i % icons.length];
           const certPdf = (c as any).pdf as string | undefined;
           const certGallery = (c as any).gallery as string[] | undefined;
+          const issuer = (c as any).issuer as string | undefined;
           return (
             <StaggerItem key={c.title}>
               <div className="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900">
@@ -35,6 +36,11 @@ export default function Certifications() {
                   <Icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-lg font-bold tracking-tight">{c.title}</h3>
+                {issuer && (
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-600 dark:text-violet-400">
+                    {issuer}
+                  </p>
+                )}
                 <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                   {c.description}
                 </p>
