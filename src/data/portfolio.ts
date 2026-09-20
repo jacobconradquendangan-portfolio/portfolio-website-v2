@@ -330,7 +330,7 @@ export const certifications = [
       "Certified in Lean Six Sigma fundamentals — waste reduction, process mapping, and continuous improvement methodology.",
     github:
       "https://github.com/jacobconradquendangan-portfolio/My-Portfolio/tree/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert",
-    pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert/Official_Certification_Issued_Lean_Six_Sigma_White_Belt_Certification.pdf",
+    pdf: "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Lean_6_Sigma_Whitebelt_Cert/Official_Certification_Issued_Lean_Six_Sigma_White_Belt_Certification.png",
   },
   {
     title: "AI Engineering Workshop (Cursor)",
