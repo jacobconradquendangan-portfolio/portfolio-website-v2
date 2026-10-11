@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
-import { ArrowRight, MapPin, Sparkles, Star } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles, Star, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { profile } from "@/data/portfolio";
 
@@ -62,7 +62,13 @@ export default function Hero() {
                 Jacob!
               </span>
             </h1>
-            <div className="shrink-0 lg:hidden">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("open-resume"))}
+              aria-label="View my resume"
+              title="Tap to view my résumé"
+              className="group relative shrink-0 cursor-pointer lg:hidden"
+            >
               {photoOk ? (
                 <Image
                   src={profile.photo}
@@ -70,14 +76,17 @@ export default function Hero() {
                   width={160}
                   height={160}
                   onError={() => setPhotoOk(false)}
-                  className="h-20 w-20 rounded-full border-4 border-white object-cover shadow-xl dark:border-zinc-800"
+                  className="h-20 w-20 rounded-full border-4 border-white object-cover shadow-xl transition-transform duration-300 group-active:scale-95 dark:border-zinc-800"
                 />
               ) : (
                 <span className="grid h-20 w-20 place-items-center rounded-full border-4 border-white text-lg font-bold text-white shadow-xl dark:border-zinc-800" style={{ background: "linear-gradient(135deg,#8b5cf6,#ec4899)" }}>
                   JC
                 </span>
               )}
-            </div>
+              <span className="pointer-events-none absolute -right-1 -bottom-1 grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-lg ring-2 ring-white dark:ring-zinc-800">
+                <FileText className="h-3.5 w-3.5" />
+              </span>
+            </button>
           </motion.div>
 
           <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
@@ -192,6 +201,9 @@ export default function Hero() {
           <motion.a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
             <LinkedinIcon className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" /> <span className="relative z-[1]">LinkedIn</span>
           </motion.a>
+          <motion.button onClick={() => window.dispatchEvent(new Event("open-resume"))} whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
+            <FileText className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110" /> <span className="relative z-[1]">Résumé</span>
+          </motion.button>
           <motion.a href={`mailto:${profile.email}`} whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
             <span className="relative z-[1]">Email</span>
           </motion.a>

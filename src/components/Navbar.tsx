@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 
 const links = [
   { href: "#about", label: "About" },
@@ -87,14 +87,14 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <span
-            title="CV is being updated — check back soon"
-            aria-label="CV updating"
-            className="group hidden cursor-not-allowed items-center gap-1.5 rounded-full bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-white/80 sm:inline-flex"
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("open-resume"))}
+            title="View my resume"
+            className="group hidden items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:scale-[1.03] hover:shadow-lg sm:inline-flex"
           >
-            CV — Updating
-            <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />
-          </span>
+            <FileText className="h-4 w-4 transition-transform group-hover:-rotate-6" /> View Resume
+          </button>
           <button
             onClick={() => setOpen(!open)}
             aria-label="Menu"

@@ -20,6 +20,8 @@ export const profile = {
   links: {
     cvBuilder: "https://cv-builder-eight-tan.vercel.app/",
     cvBuilderGithub: "https://github.com/jacobconradquendangan-portfolio/CV-Builder",
+    resume:
+      "https://raw.githubusercontent.com/jacobconradquendangan-portfolio/My-Portfolio/main/04_Credentials_Leadership/Resume/QUENDANGAN_JacobConrad_Resume.pdf",
   },
 };
 
