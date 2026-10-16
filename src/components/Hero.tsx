@@ -122,10 +122,10 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
-          <motion.div variants={item} className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-slate-200 pt-6 dark:border-white/[.1]">
+          <motion.div variants={item} className="mx-auto mt-10 grid w-full max-w-md grid-cols-3 gap-2 border-t border-slate-200 pt-6 dark:border-white/[.1] sm:mx-0 sm:gap-6">
             {profile.stats.map((s) => (
-              <div key={s.label}>
-                <p className="text-2xl font-bold tracking-tight">{s.value}</p>
+              <div key={s.label} className="min-w-0 text-center sm:text-left">
+                <p className="text-xl font-bold tracking-tight sm:text-2xl">{s.value}</p>
                 <p className="mt-1 text-xs leading-4 text-zinc-500">{s.label}</p>
               </div>
             ))}
