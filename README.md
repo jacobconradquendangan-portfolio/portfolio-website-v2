@@ -1,30 +1,31 @@
-# Jacob Conrad Quendangan — Portfolio
+# Jacob Conrad Quendangan
 
-Information Systems student focused on data analytics, machine learning, and UI/UX — currently exploring Agentic AI with Cline.
+### Information Systems Student · Data Analytics · UI/UX
 
-Live: https://your-portfolio.vercel.app  
-GitHub: https://github.com/jacobconradquendangan-portfolio
+This portfolio presents my work across data analytics, software development, systems design, and user experience. I am an Information Systems student at CIIT College of Innovation and Integrated Technology, expected to graduate in 2027, with an interest in building thoughtful, useful digital products.
 
-## Stack
-Next.js 16 (App Router) • TypeScript • Tailwind CSS 4 • Framer Motion • Lucide
+## Focus
 
-## Develop
-```bash
-npm install
-npm run dev  # http://localhost:3000
-npm run build
-npm run lint
-```
+- **Data and analytics** — machine learning, dashboards, and data-informed decision-making
+- **Software and systems** — web applications, database design, and end-to-end project delivery
+- **UI/UX** — research, interface design, and prototyping
+- **Agentic AI** — exploring AI-assisted development and practical LLM-powered applications
 
-## Structure
-- `src/app` — layout, page, globals
-- `src/components` — Navbar, Hero, About, Skills, Projects, Certifications, Contact, Footer
-- `src/data/portfolio.ts` — single source for profile, skills, projects, certifications
-- `public/profile.jpg` — headshot (1200×1200)
+## Selected highlights
 
-## Before deploy
-- Replace `allowedDevOrigins` in `next.config.ts` with your deployment host or remove the dev-only entry.
-- Update `links.cvBuilder` / social URLs in `src/data/portfolio.ts` if needed.
+- **1st Place Industry Choice** — MNLFlow Transit
+- **2nd Place Hackathon** — Aegis Verification Platform
+- **92% model accuracy** — Diabetes ML Classifier
+- **Leadership and speaking** — Tech Lead and conference roles across 5+ events
 
-## Deploy
-Push to GitHub and import to Vercel — no env vars required.
+Explore the Projects and Certifications sections of the portfolio for more details.
+
+## Technology
+
+Next.js · TypeScript · Tailwind CSS · Framer Motion · Python · SQL · Power BI · Figma
+
+## Contact
+
+- **Email:** [jacobconradquendangan@gmail.com](mailto:jacobconradquendangan@gmail.com)
+- **GitHub:** [jacobconradquendangan-portfolio](https://github.com/jacobconradquendangan-portfolio)
+- **LinkedIn:** [Jacob Conrad Quendangan](https://www.linkedin.com/in/jacob-conrad-quendangan-176525435)
