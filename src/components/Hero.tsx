@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
-import { ArrowRight, MapPin, Sparkles, Star, FileText } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles, Star, FileText, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { profile } from "@/data/portfolio";
 
@@ -193,19 +193,16 @@ export default function Hero() {
 
       <style>{`.findme-link{position:relative;overflow:hidden}.findme-link::before{content:"";position:absolute;inset:0;border-radius:9999px;background:linear-gradient(135deg,#8b5cf6,#ec4899,#f97316);opacity:0;transition:opacity .3s;z-index:0}.findme-link:hover::before{opacity:1}.findme-link:hover{color:#fff!important;box-shadow:0 8px 24px rgb(124 58 237 / .28)!important;transform:translateY(-2px) scale(1.04)}.findme-link:active{transform:translateY(0) scale(.98)!important}.findme-link>svg,.findme-link>span{position:relative;z-index:1}@media(prefers-color-scheme:dark){.findme-link:hover{color:#fff!important}}`}</style>
       <div className="border-y border-slate-200 bg-black/[.02] dark:border-white/[.06] dark:bg-white/[.02]">
-        <div className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-3 text-sm font-medium text-zinc-500">
-          <span className="font-mono text-xs uppercase tracking-widest">Find me</span>
-          <motion.a href={profile.socials.github} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
-            <GithubIcon className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" /> <span className="relative z-[1]">GitHub</span>
+        <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-4 py-3 text-sm font-medium text-zinc-500 sm:gap-6 sm:px-6">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400 sm:text-xs">Find me</span>
+          <motion.a href={profile.socials.github} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex min-h-11 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-black/10 bg-white/70 px-1.5 py-1.5 text-xs backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white sm:min-h-0 sm:flex-none sm:justify-start sm:gap-1.5 sm:px-3.5 sm:text-sm dark:border-white/15 dark:bg-white/[.06]">
+            <GithubIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 sm:h-4 sm:w-4" /> <span className="relative z-[1]">GitHub</span>
           </motion.a>
-          <motion.a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
-            <LinkedinIcon className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" /> <span className="relative z-[1]">LinkedIn</span>
+          <motion.a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex min-h-11 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-black/10 bg-white/70 px-1.5 py-1.5 text-xs backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white sm:min-h-0 sm:flex-none sm:justify-start sm:gap-1.5 sm:px-3.5 sm:text-sm dark:border-white/15 dark:bg-white/[.06]">
+            <LinkedinIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 sm:h-4 sm:w-4" /> <span className="relative z-[1]">LinkedIn</span>
           </motion.a>
-          <motion.button onClick={() => window.dispatchEvent(new Event("open-resume"))} whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
-            <FileText className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110" /> <span className="relative z-[1]">Résumé</span>
-          </motion.button>
-          <motion.a href={`mailto:${profile.email}`} whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white dark:border-white/15 dark:bg-white/[.06]">
-            <span className="relative z-[1]">Email</span>
+          <motion.a href={`mailto:${profile.email}`} whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 18 }} className="findme-link group inline-flex min-h-11 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-black/10 bg-white/70 px-1.5 py-1.5 text-xs backdrop-blur transition-colors duration-200 hover:border-transparent hover:text-white sm:min-h-0 sm:flex-none sm:justify-start sm:gap-1.5 sm:px-3.5 sm:text-sm dark:border-white/15 dark:bg-white/[.06]">
+            <Mail className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:scale-110 sm:h-4 sm:w-4" /> <span className="relative z-[1]">Email</span>
           </motion.a>
         </div>
       </div>
