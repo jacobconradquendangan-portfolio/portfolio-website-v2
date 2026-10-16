@@ -367,16 +367,6 @@ export default function Projects() {
         )}
       </AnimatePresence>
 
-      <p className="mt-8 text-center">
-        <a
-          href="https://github.com/jacobconradquendangan-portfolio/My-Portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium underline underline-offset-4"
-        >
-          View everything on GitHub →
-        </a>
-      </p>
     </section>
   );
 }
