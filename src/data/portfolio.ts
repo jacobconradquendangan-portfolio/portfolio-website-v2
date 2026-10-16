@@ -307,7 +307,19 @@ export const projects: (Project & { gradient: string })[] = [
   },
 ];
 
-export const certifications = [
+export type Certification = {
+  title: string;
+  issuer: string;
+  description: string;
+  highlight: string;
+  tone: string;
+  details: { label: string; value: string }[];
+  github: string;
+  pdf?: string;
+  gallery?: string[];
+};
+
+export const certifications: Certification[] = [
   {
     title: "HubSpot Certifications",
     issuer: "HubSpot Academy",

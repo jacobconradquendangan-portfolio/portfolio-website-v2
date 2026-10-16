@@ -13,7 +13,11 @@ const icons = [Award, Users, BadgeCheck, Bot];
 export default function Certifications() {
   const [pdf, setPdf] = useState<string | null>(null);
   const [gallery, setGallery] = useState<string[] | null>(null);
-  const activeTitle = gallery ? certifications.find((c) => (c as any).gallery === gallery)?.title ?? "Certificates" : pdf ? certifications.find((c) => (c as any).pdf === pdf)?.title ?? "Certificate" : "";
+  const activeTitle = gallery
+    ? certifications.find((c) => c.gallery === gallery)?.title ?? "Certificates"
+    : pdf
+      ? certifications.find((c) => c.pdf === pdf)?.title ?? "Certificate"
+      : "";
 
   return (
     <section id="certifications" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20">
@@ -26,9 +30,9 @@ export default function Certifications() {
       <Stagger className="mt-10 grid gap-6 md:grid-cols-2">
         {certifications.map((c, i) => {
           const Icon = icons[i % icons.length];
-          const certPdf = (c as any).pdf as string | undefined;
-          const certGallery = (c as any).gallery as string[] | undefined;
-          const issuer = (c as any).issuer as string | undefined;
+          const certPdf = c.pdf;
+          const certGallery = c.gallery;
+          const issuer = c.issuer;
           return (
             <StaggerItem key={c.title}>
               <div className="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/[.09] dark:bg-slate-900">
