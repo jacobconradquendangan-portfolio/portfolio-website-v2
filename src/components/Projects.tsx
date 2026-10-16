@@ -160,7 +160,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.3 }}
-              className="group mx-auto flex h-full w-full max-w-[352px] flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900"
+              className="group mx-auto flex h-full w-full max-w-none flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900 md:max-w-[352px]"
             >
               <div className={`relative h-48 overflow-hidden border-b border-zinc-200 dark:border-zinc-700 ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
                 {p.image ? (
