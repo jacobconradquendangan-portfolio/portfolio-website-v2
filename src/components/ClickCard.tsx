@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Star } from "lucide-react";
+import { ExternalLink, Star, X } from "lucide-react";
 import { GithubIcon } from "./icons";
 import type { Project } from "@/data/portfolio";
 
@@ -20,7 +20,7 @@ export default function ClickCard({
   onPdf: (src: string) => void;
   onImage: (src: string) => void;
 }) {
-  const [showTags, setShowTags] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const handleSecondary = () => {
     if (!project.live) return;
@@ -52,9 +52,9 @@ export default function ClickCard({
       transition={{ duration: 0.3 }}
       className="group relative mx-auto flex h-full w-full max-w-none flex-col overflow-hidden rounded-xl border border-neutral-200 bg-neutral-900/80 backdrop-blur-sm text-gray-50 shadow-md shadow-black/[.04] transition-shadow duration-300 hover:shadow-lg hover:shadow-black/10 dark:shadow-black/20 dark:hover:shadow-black/30 md:max-w-[352px]"
     >
-      <div className="before:duration-700 relative z-10 flex h-full flex-col justify-between before:absolute before:-left-4 before:-top-12 before:h-28 before:w-28 before:rounded-full before:border-8 before:border-white/20 before:bg-transparent before:blur-none group-hover:before:left-44 group-hover:before:top-28 group-hover:before:scale-125 group-hover:before:blur">
+      <div className="relative flex flex-1 flex-col overflow-hidden">
         {project.image && (
-          <div className="relative h-40 w-full overflow-hidden">
+          <div className="relative h-40 w-full shrink-0 overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
@@ -69,76 +69,85 @@ export default function ClickCard({
             )}
           </div>
         )}
+
         <div
           className="flex flex-1 cursor-pointer flex-col justify-evenly p-3"
-          onClick={() => setShowTags(!showTags)}
+          onClick={() => setShowDetails(true)}
         >
           <span className="text-lg font-semibold">{project.title}</span>
-          <AnimatePresence mode="wait">
-            {showTags ? (
-              <motion.div
-                key="tags"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-wrap gap-1.5"
+          <p className="line-clamp-2 text-xs leading-relaxed text-gray-100/90">
+            {project.description}
+          </p>
+        </div>
+
+        <AnimatePresence>
+          {showDetails && (
+            <motion.div
+              initial={{ opacity: 0, scale: 1.04, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.04, y: 12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 z-30 flex flex-col justify-center gap-3 bg-black/75 p-4 backdrop-blur-sm"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setShowDetails(false)}
+                aria-label="Close"
+                className="absolute right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-full bg-white/15 text-white transition hover:bg-white/30"
               >
+                <X className="h-3.5 w-3.5" />
+              </button>
+
+              <h3 className="pr-7 text-base font-bold text-white">{project.title}</h3>
+              <p className="text-xs leading-relaxed text-gray-100/90">{project.description}</p>
+
+              <div className="flex flex-wrap gap-1.5">
                 {project.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium backdrop-blur-sm"
+                    className="rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm"
                   >
                     {t}
                   </span>
                 ))}
-              </motion.div>
-            ) : (
-              <motion.p
-                key="desc"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-                className="line-clamp-2 text-xs leading-relaxed text-gray-100/90"
-              >
-                {project.description}
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </div>
-        <div className="z-10 flex w-full flex-row justify-between divide-x divide-neutral-200 border-t border-neutral-200">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View on GitHub"
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="z-40 flex w-full flex-row justify-between divide-x divide-neutral-200 border-t border-neutral-200">
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View on GitHub"
+          className="flex w-full items-center justify-center gap-1.5 bg-white py-3 text-xs font-semibold text-neutral-900 transition hover:opacity-90"
+        >
+          <GithubIcon className="h-4 w-4" /> View on GitHub
+        </a>
+        {secondaryLabel && (
+          <button
+            onClick={handleSecondary}
+            aria-label={secondaryLabel}
             className="flex w-full items-center justify-center gap-1.5 bg-white py-3 text-xs font-semibold text-neutral-900 transition hover:opacity-90"
           >
-            <GithubIcon className="h-4 w-4" /> View on GitHub
-          </a>
-          {secondaryLabel && (
-            <button
-              onClick={handleSecondary}
-              aria-label={secondaryLabel}
-              className="flex w-full items-center justify-center gap-1.5 bg-white py-3 text-xs font-semibold text-neutral-900 transition hover:opacity-90"
-            >
-              <ExternalLink className="h-4 w-4" /> {secondaryLabel}
-            </button>
-          )}
-          {project.video && (
-            <button
-              onClick={() => onVideo(project.video!)}
-              aria-label="Video"
-              className="flex w-full items-center justify-center gap-1.5 bg-white py-3 text-xs font-semibold text-neutral-900 transition hover:opacity-90"
-            >
-              <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
-                <path d="M5 3l14 9-14 9V3z" strokeWidth="2" strokeLinejoin="round" fill="none" />
-              </svg>
-              Video
-            </button>
-          )}
-        </div>
+            <ExternalLink className="h-4 w-4" /> {secondaryLabel}
+          </button>
+        )}
+        {project.video && (
+          <button
+            onClick={() => onVideo(project.video!)}
+            aria-label="Video"
+            className="flex w-full items-center justify-center gap-1.5 bg-white py-3 text-xs font-semibold text-neutral-900 transition hover:opacity-90"
+          >
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+              <path d="M5 3l14 9-14 9V3z" strokeWidth="2" strokeLinejoin="round" fill="none" />
+            </svg>
+            Video
+          </button>
+        )}
       </div>
     </motion.article>
   );

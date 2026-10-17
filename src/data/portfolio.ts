@@ -94,7 +94,7 @@ export const projects: (Project & { gradient: string })[] = [
   {
     title: "CV Builder",
     description:
-      "A real-time Next.js application that transforms user inputs into polished, structured resumes. Engineered using Cline in VS Code to explore modern agentic workflows — leveraging autonomous AI to accelerate component architecture, state management, and rapid feature iteration.",
+      "A real-time Next.js app that turns user inputs into polished, structured resumes. Built with Cline in VS Code to explore agentic AI workflows for faster component architecture and feature iteration.",
     tags: ["Next.js", "Frontend", "Cline", "Agentic Workflow"],
     github: "https://github.com/jacobconradquendangan-portfolio/CV-Builder",
     live: "https://cv-builder-eight-tan.vercel.app/",
@@ -107,7 +107,7 @@ export const projects: (Project & { gradient: string })[] = [
   {
     title: "Numera",
     description:
-      "Audit-grade analysis of any financial statement. Ingests PDF, Excel or CSV statements (or paste/manual entry), validates Assets = Liabilities + Equity, runs vertical and horizontal analysis, then computes the full CFI ratio suite — every figure backed by its formula and step-by-step solution.",
+      "Audit-grade financial statement analysis. Ingests PDF, Excel or CSV files, validates the accounting equation, runs vertical and horizontal analysis, and computes the full CFI ratio suite — every figure backed by its formula and step-by-step solution.",
     tags: ["Next.js", "TypeScript", "Recharts", "PDF/Excel Parsing", "Financial Analysis"],
     github: "https://github.com/jacobconradquendangan-portfolio/Numera",
     live: "https://numera-black.vercel.app/",
