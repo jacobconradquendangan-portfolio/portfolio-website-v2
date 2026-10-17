@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Search, Star } from "lucide-react";
+import { Search, Star } from "lucide-react";
 import { GithubIcon } from "./icons";
 import SectionHeading from "./SectionHeading";
 import { projects, projectCategories } from "@/data/portfolio";
@@ -130,15 +130,6 @@ export default function Projects() {
                     <Star className="h-3 w-3 fill-amber-500 text-amber-500" /> Featured
                   </span>
                 )}
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${p.title} on GitHub`}
-                  className="absolute right-4 bottom-3 grid h-11 w-11 place-items-center rounded-full bg-white text-black opacity-0 transition-all duration-300 group-hover:opacity-100"
-                >
-                  <ArrowUpRight className="h-5 w-5" />
-                </a>
               </div>
               <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center gap-2">
