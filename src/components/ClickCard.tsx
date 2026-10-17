@@ -54,7 +54,10 @@ export default function ClickCard({
     >
       <div className="relative flex flex-col overflow-hidden">
         {project.image && (
-          <div className="relative h-40 w-full shrink-0 overflow-hidden">
+          <div
+            className="relative h-40 w-full shrink-0 cursor-pointer overflow-hidden"
+            onClick={() => setShowDetails(true)}
+          >
             <Image
               src={project.image}
               alt={project.title}
@@ -70,10 +73,7 @@ export default function ClickCard({
           </div>
         )}
 
-        <div
-          className="flex cursor-pointer flex-col gap-1.5 p-3"
-          onClick={() => setShowDetails(true)}
-        >
+        <div className="flex flex-col gap-1.5 p-3">
           <span className="text-lg font-semibold">{project.title}</span>
           <p className="line-clamp-2 text-xs leading-relaxed text-gray-100/90">
             {project.description}
