@@ -1,18 +1,11 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Star } from "lucide-react";
-import { GithubIcon } from "./icons";
+import { Search } from "lucide-react";
 import SectionHeading from "./SectionHeading";
+import ClickCard from "./ClickCard";
 import { projects, projectCategories } from "@/data/portfolio";
-
-const highlightStyle: Record<string, string> = {
-  "Industry Award": "bg-indigo-600",
-  "System Architecture": "bg-slate-900",
-  "Data Analytics": "bg-teal-600",
-};
 
 export default function Projects() {
   const [category, setCategory] = useState<(typeof projectCategories)[number]>("All");
@@ -106,103 +99,15 @@ export default function Projects() {
 
       <motion.div layout className="mt-8 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
-          {visibleGrid.map((p, idx) => (
-            <motion.article
-              layout
+          {visibleGrid.map((p) => (
+            <ClickCard
               key={p.title}
-              initial={mounted ? { opacity: 0, scale: 0.94 } : false}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.94 }}
-              transition={{ duration: 0.3 }}
-              className="group mx-auto flex h-full w-full max-w-none flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md dark:border-white/[.09] dark:bg-slate-900 md:max-w-[352px]"
-            >
-              <div className={`relative h-48 overflow-hidden border-b border-zinc-200 dark:border-zinc-700 ${p.image ? "bg-black" : `bg-gradient-to-br ${p.gradient}`} p-5`}>
-                {p.image ? (
-                  <>
-                    <Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" priority={idx < 1} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-                  </>
-                ) : (
-                  <div className="bg-grid absolute inset-0 opacity-40" />
-                )}
-                {p.featured && (
-                  <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-md bg-white px-2 py-1 text-xs font-medium text-zinc-900 shadow-sm sm:right-5 sm:top-5 sm:gap-1.5 sm:rounded-full sm:px-2.5 sm:py-1 sm:text-[11px] sm:font-semibold">
-                    <Star className="h-3 w-3 fill-amber-500 text-amber-500" /> Featured
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-center gap-2">
-                  <span className={`inline-flex h-2 w-2 rounded-full ${highlightStyle[p.category] ?? "bg-zinc-900"}`} />
-                  <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{p.category}</span>
-                </div>
-                <div className="mt-3 flex flex-wrap gap-1.5 lg:hidden">
-                  {p.tags.map((t) => (
-                    <span key={t} className="whitespace-nowrap shrink-0 rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-3 hidden flex-nowrap gap-1.5 overflow-hidden lg:flex">
-                  {p.tags.slice(0, 2).map((t) => (
-                    <span key={t} className="whitespace-nowrap shrink-0 rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-                      {t}
-                    </span>
-                  ))}
-                  {p.tags.length > 2 && (
-                    <span className="whitespace-nowrap shrink-0 rounded bg-zinc-100 px-2 py-1 text-xs font-medium text-zinc-500 dark:bg-zinc-800">+{p.tags.length - 2}</span>
-                  )}
-                </div>
-                <h3 className="mt-3 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{p.title}</h3>
-                <p className="mt-2 line-clamp-3 min-h-[4.5rem] flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                  {p.description}
-                </p>
-                <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-700">
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-black"
-                  >
-                    <GithubIcon className="h-3.5 w-3.5" /> View on GitHub
-                  </a>
-                  {p.live && (
-                    p.live.endsWith(".pdf") ? (
-                      <button
-                        onClick={() => setPdfSrc(p.live!)}
-                        className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold cursor-pointer transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
-                      >
-                        {p.title === "Wine Data Mining" || p.title === "Airline Regression" ? "Report ↗" : "Slides ↗"}
-                      </button>
-                    ) : p.live.endsWith(".jpg") || p.live.endsWith(".jpeg") || p.live.endsWith(".png") || p.live.endsWith(".webp") ? (
-                      <button
-                        onClick={() => setImageSrc(p.live!)}
-                        className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold cursor-pointer transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
-                      >
-                        Certificate ↗
-                      </button>
-                    ) : (
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold cursor-pointer transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
-                      >
-                        {p.live.includes("figma.com") ? "Figma Demo ↗" : p.live.includes("officeapps.live.com") || p.live.includes("docs.google.com") ? "Preview ↗" : "Live ↗"}
-                      </a>
-                    )
-                  )}
-                  {p.video && (
-                    <button
-                      onClick={() => setVideoSrc(p.video!)}
-                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-semibold cursor-pointer transition hover:border-violet-300 hover:text-violet-600 dark:border-white/15 dark:bg-transparent"
-                    >
-                      Video ▶
-                    </button>
-                  )}
-                </div>
-              </div>
-            </motion.article>
+              project={p}
+              mounted={mounted}
+              onVideo={setVideoSrc}
+              onPdf={setPdfSrc}
+              onImage={setImageSrc}
+            />
           ))}
         </AnimatePresence>
       </motion.div>
