@@ -105,6 +105,19 @@ export const projects: (Project & { gradient: string })[] = [
     image: "/projects/cvbuilder.webp",
   },
   {
+    title: "Numera",
+    description:
+      "Audit-grade analysis of any financial statement. Ingests PDF, Excel or CSV statements (or paste/manual entry), validates Assets = Liabilities + Equity, runs vertical and horizontal analysis, then computes the full CFI ratio suite — every figure backed by its formula and step-by-step solution.",
+    tags: ["Next.js", "TypeScript", "Recharts", "PDF/Excel Parsing", "Financial Analysis"],
+    github: "https://github.com/jacobconradquendangan-portfolio/Numera",
+    live: "https://numera-black.vercel.app/",
+    category: "Data Analytics",
+    highlight: "26 CFI Ratios • Audit-Grade",
+    featured: true,
+    gradient: G.data,
+    image: "/projects/numera.webp",
+  },
+  {
     title: "MNLFlow Transit",
     description:
       "1st Place Industry Choice Award. Flight tracking and regional transit logic with a real-time analytics dashboard.",
