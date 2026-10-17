@@ -50,9 +50,9 @@ export default function ClickCard({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.94 }}
       transition={{ duration: 0.3 }}
-      className="group relative mx-auto flex h-full w-full max-w-none flex-col overflow-hidden rounded-xl border border-neutral-200 bg-neutral-900/80 backdrop-blur-sm text-gray-50 shadow-md shadow-black/[.04] transition-shadow duration-300 hover:shadow-lg hover:shadow-black/10 dark:shadow-black/20 dark:hover:shadow-black/30 md:max-w-[352px]"
+      className="group relative mx-auto flex w-full max-w-none self-start flex-col overflow-hidden rounded-xl border border-neutral-200 bg-neutral-900/80 backdrop-blur-sm text-gray-50 shadow-md shadow-black/[.04] transition-shadow duration-300 hover:shadow-lg hover:shadow-black/10 dark:shadow-black/20 dark:hover:shadow-black/30 md:max-w-[352px]"
     >
-      <div className="relative flex flex-1 flex-col overflow-hidden">
+      <div className="relative flex flex-col overflow-hidden">
         {project.image && (
           <div className="relative h-40 w-full shrink-0 overflow-hidden">
             <Image
@@ -71,7 +71,7 @@ export default function ClickCard({
         )}
 
         <div
-          className="flex flex-1 cursor-pointer flex-col justify-evenly p-3"
+          className="flex cursor-pointer flex-col gap-1.5 p-3"
           onClick={() => setShowDetails(true)}
         >
           <span className="text-lg font-semibold">{project.title}</span>
